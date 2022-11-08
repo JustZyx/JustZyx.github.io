@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>很实用的一些配置集合 - 庄全🥚</title>
+<meta property="og:title" content="很实用的一些配置集合 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    
+    <h1 class="article-title">很实用的一些配置集合</h1>
+    
+
+    
+    <span class="article-date">January 21, 2018</span>
+    
+
+    <div class="article-content">
+      <p>换设备经常会用到的一些东西、有些比较容易忘，在此记录一下</p>
+<h2 id="vim">
+  Vim
+  <a class="anchor" href="#vim">#</a>
+</h2>
+<h3 id="显示行号">
+  显示行号
+  <a class="anchor" href="#%e6%98%be%e7%a4%ba%e8%a1%8c%e5%8f%b7">#</a>
+</h3>
+<ol>
+<li>永久</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#39;set number&#39;</span> &gt;&gt; ~/.vimrc
+</code></pre></div><ol start="2">
+<li>临时</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vimrc" data-lang="vimrc">: <span style="color:#a6e22e">set</span> <span style="color:#a6e22e">number</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="批量注释取消注释">
+  批量注释&amp;&amp;取消注释
+  <a class="anchor" href="#%e6%89%b9%e9%87%8f%e6%b3%a8%e9%87%8a%e5%8f%96%e6%b6%88%e6%b3%a8%e9%87%8a">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">:起始行号,结束行号s/^/注释符/g
+:起始行号,结束行号s/^注释符//g
+</code></pre></div><h3 id="批量替换">
+  批量替换
+  <a class="anchor" href="#%e6%89%b9%e9%87%8f%e6%9b%bf%e6%8d%a2">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">:%s/源字符串/目的字符串/g
+</code></pre></div><h3 id="tab设置为4个空格">
+  tab设置为4个空格
+  <a class="anchor" href="#tab%e8%ae%be%e7%bd%ae%e4%b8%ba4%e4%b8%aa%e7%a9%ba%e6%a0%bc">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">set ts<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>
+set expandtab
+</code></pre></div><h2 id="shell命令">
+  Shell命令
+  <a class="anchor" href="#shell%e5%91%bd%e4%bb%a4">#</a>
+</h2>
+<h3 id="scp">
+  scp
+  <a class="anchor" href="#scp">#</a>
+</h3>
+<ol>
+<li>上传</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp 本地文件完整路径 username@ip:远程目录路径
+</code></pre></div><ol start="2">
+<li>下载</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">scp username@ip:远程文件完整路径 本地目录
+</code></pre></div><h2 id="vscode">
+  VSCode
+  <a class="anchor" href="#vscode">#</a>
+</h2>
+<h3 id="更换默认shell">
+  更换默认shell
+  <a class="anchor" href="#%e6%9b%b4%e6%8d%a2%e9%bb%98%e8%ae%a4shell">#</a>
+</h3>
+<pre tabindex="0"><code>https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration
+</code></pre><h3 id="列编辑">
+  列编辑
+  <a class="anchor" href="#%e5%88%97%e7%bc%96%e8%be%91">#</a>
+</h3>
+<p><code>alt + shift + 鼠标滚动</code></p>
+<h2 id="os">
+  OS
+  <a class="anchor" href="#os">#</a>
+</h2>
+<h3 id="mac环境变量更改">
+  Mac环境变量更改
+  <a class="anchor" href="#mac%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%9b%b4%e6%94%b9">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd /etc/paths.d
+touch go //go环境变量
+touch nginx //nginx环境变量
+</code></pre></div><p>参考: <a href="https://www.jianshu.com/p/acb1f062a925">mac设置环境变量</a></p>
+<h2 id="vcs">
+  VCS
+  <a class="anchor" href="#vcs">#</a>
+</h2>
+<h3 id="git免密pullpush">
+  Git免密Pull&amp;Push
+  <a class="anchor" href="#git%e5%85%8d%e5%af%86pullpush">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git config --global credential.helper store --file ~/.my-credentials
+</code></pre></div><p>参考：<a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E5%87%AD%E8%AF%81%E5%AD%98%E5%82%A8">Git工具-凭证存储</a></p>
+
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

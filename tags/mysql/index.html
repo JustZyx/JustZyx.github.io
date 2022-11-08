@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="MySQL" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://justzyx.github.io/tags/mysql/" />
+
+<title>MySQL | 八股文</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.48b2887f47a4eb80fef1013453214ed45cff2e66be5e568689dbd0f3c1d20569.js" integrity="sha256-SLKIf0ek64D&#43;8QE0UyFO1Fz/Lma&#43;XlaGidvQ88HSBWk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://justzyx.github.io/tags/mysql/index.xml" title="八股文" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/docs/"><span>八股文</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/" class="">思维导图</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/redis/" class="">Redis</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/" class="">面试题</a>
+  
+
+          
+  <ul>
+    
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://blog.justzyx.cn/" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>MySQL</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/blog/2018-03-14-share-mysql-index-from-query/">再谈MySQL索引</a>
+    </h2>
+    
+  <h5>March 14, 2018</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/mysql/">MySQL</a>
+  </div>
+  
+
+
+
+
+    <p>前言 #  MySQL索引是一个老生常谈的话题，在开始本文之前希望大家都问自己几个问题：
+ 什么是索引？ 为什么索引可以加快查询速度？ 索引是不是越多越好，为什么？ 什么时候该建索引，什么时候不该建，判断的依据是什么？ 如何评价一条sql实际的执行效果？ b树和b+树的区别是啥？为什么最终选择了b+树这种数据结构？  如果您基础扎实，工程经验丰富，对上述几个问题非常清晰，那么希望老师傅帮忙Review一下本文，感激不尽。反之，我相信下面的内容应该多多少少能够给大家一点帮助。本文依托贷上钱业务库实际的例子将从以下三个方面来介绍一下MySQL的索引，力求深入浅出，老少咸宜：
+ 索引的原理 慢查询优化 贷上钱业务库的慢查以及改进方案  注：1.由于MySQL版本变化、实际数据量以及业务的特殊性等因素，本文所提及的所有建议及实操方案均有其特殊性，切不可生搬硬套，需具体问题具体分析。本文所举例子并不能涵盖所有case，但对培养定位慢查的思维过程有一定的以不变应万变效果。2. 本文默认使用InnoDB存储引擎
+索引的原理 #   我们都知道，MySQL能支持千万级，甚至亿级别的数据量，这么大的数据肯定不可能放在内存中，那么只能是在磁盘上了。 另外，我们也知道磁盘的读写开销远比内存读写开销大的多的多，如果是随机访问的话大约是10万倍级别的差距。 我们考虑一个问题，假设在10000个整数中查找某个整数，我们通常的做法是通过二叉搜索树，其平均复杂度是O(lgN)，时间复杂度已经相当优化，但这里我们忽略了一个关键的问题，复杂度模型是基于每次相同的操作成本来考虑的，数据库实现比较复杂，数据保存在磁盘上，而为了提高性能，每次又可以把部分数据读入内存来计算，因为我们知道访问磁盘的成本大概是访问内存的十万倍左右，所以简单的搜索树难以满足复杂的应用场景。  由此我们可以得出一个结论，查找速度取决于磁盘IO次数，而磁盘IO次数又取决于树的高度。那么为了满足高速查找的需求，我们是否可以构造一种高度可控的多路搜索树呢？这就是B+树。
+简述B+树运行过程 #  浅蓝色的块我们称之为一个磁盘块，可以看到每个磁盘块包含几个数据项（深蓝色所示）和指针（黄色所示），如磁盘块1包含数据项17和35，包含指针P1、P2、P3，P1表示小于17的磁盘块，P2表示在17和35之间的磁盘块，P3表示大于35的磁盘块。真实的数据存在于叶子节点即3、5、9、10、13、15、28、29、36、60、75、79、90、99。非叶子节点只不存储真实的数据，只存储指引搜索方向的数据项，如17、35并不真实存在于数据表中。
+如果要查找数据项29，那么首先会把磁盘块1由磁盘加载到内存，此时发生一次IO，在内存中用二分查找确定29在17和35之间，锁定磁盘块1的P2指针，内存时间因为非常短（相比磁盘的IO）可以忽略不计，通过磁盘块1的P2指针的磁盘地址把磁盘块3由磁盘加载到内存，发生第二次IO，29在26和30之间，锁定磁盘块3的P2指针，通过指针加载磁盘块8到内存，发生第三次IO，同时内存中做二分查找找到29，结束查询，总计三次IO。真实的情况是，3层的b+树可以表示上百万的数据，如果上百万的数据查找只需要三次IO，性能提高将是巨大的，如果没有索引，每个数据项都要发生一次IO，那么总共需要百万次的IO，显然成本非常非常高。
+性质 #    通过上面的分析，我们知道IO次数取决于b+数的高度h，假设当前数据表的数据为N，每个磁盘块的数据项的数量是m，则有h=㏒(m+1)N，当数据量N一定的情况下，m越大，h越小；而m = 磁盘块的大小 / 数据项的大小，磁盘块的大小也就是一个数据页的大小，是固定的，如果数据项占的空间越小，数据项的数量越多，树的高度越低。这就是为什么每个数据项，即索引字段要尽量的小，比如int占4字节，要比bigint8字节少一半。这也是为什么b+树要求把真实的数据放到叶子节点而不是内层节点，一旦放到内层节点，磁盘块的数据项会大幅度下降，导致树增高。当数据项等于1时将会退化成线性表。
+  当b+树的数据项是复合的数据结构，比如(name,age,sex)的时候，b+数是按照从左到右的顺序来建立搜索树的，比如当(张三,20,F)这样的数据来检索的时候，b+树会优先比较name来确定下一步的所搜方向，如果name相同再依次比较age和sex，最后得到检索的数据；但当(20,F)这样的没有name的数据来的时候，b+树就不知道下一步该查哪个节点，因为建立搜索树的时候name就是第一个比较因子，必须要先根据name来搜索才能知道下一步去哪里查询。比如当(张三,F)这样的数据来检索时，b+树可以用name来指定搜索方向，但下一个字段age的缺失，所以只能把名字等于张三的数据都找到，然后再匹配性别是F的数据了， 这个是非常重要的性质，即索引的最左匹配特性。
+  慢查询优化 #  提到慢查，当我还是小白的时候，老师傅一般都是粗暴的让我怼一个索引上去。但是如何判断一个索引应不应该加？如何评价索引的效果？
+ 尽可能选择区分度高的列作为索引，区分度公式是  count(distinct(column)/count(*) 表示字段不重复的比例，取值范围是(0,1]，唯一键的区分度为1，enum，tinyint等则区分度无限趋近于0。区分度越高扫描的记录数越少，反之越多，索引代价较高，一般需要join的字段索引区分度建议0.1以上，即平均1条扫描10条记录
+ 提到索引效果就不得不提查询优化神器 — EXPLAIN命令了。 其中rows是核心指标，绝大部分rows小的语句执行一定很快（有例外，下面会讲到）。所以优化语句基本上都是在优化rows。
+  最左前缀匹配原则 mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整
+        <a href="/blog/2018-03-14-share-mysql-index-from-query/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

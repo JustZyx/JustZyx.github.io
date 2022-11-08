@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>Git中低频操作 - 庄全🥚</title>
+<meta property="og:title" content="Git中低频操作 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    
+    <h1 class="article-title">Git中低频操作</h1>
+    
+
+    
+    <span class="article-date">March 25, 2018</span>
+    
+
+    <div class="article-content">
+      <h2 id="背景">
+  背景
+  <a class="anchor" href="#%e8%83%8c%e6%99%af">#</a>
+</h2>
+<p>Git高频操作天天用早就烂熟于心了，此文仅仅记录Git中低频操作。大致符合以下两个特点：</p>
+<ul>
+<li>不常用且易忘</li>
+<li>知识盲区，未曾使用过</li>
+</ul>
+<h2 id="操作列表">
+  操作列表
+  <a class="anchor" href="#%e6%93%8d%e4%bd%9c%e5%88%97%e8%a1%a8">#</a>
+</h2>
+<h3 id="删除分支">
+  删除分支
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e5%88%86%e6%94%af">#</a>
+</h3>
+<ul>
+<li>
+<p>删除本地分支</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git branch //列出本地所有分支
+git branch -d feature/branchName //删除其中一个分支
+git branch | grep <span style="color:#e6db74">&#34;branchName&#34;</span> | xargs git branch -D //批量删除带有branchName关键词的分支
+</code></pre></div></li>
+<li>
+<p>删除远程分支</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git branch -r //列出所有远程分支
+git push origin :branchName //删除一个远程分支
+git push --delete origin branchName
+</code></pre></div></li>
+</ul>
+<h2 id="分支同步">
+  分支同步
+  <a class="anchor" href="#%e5%88%86%e6%94%af%e5%90%8c%e6%ad%a5">#</a>
+</h2>
+<ul>
+<li>git rebase</li>
+</ul>
+
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

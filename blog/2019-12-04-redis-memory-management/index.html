@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>Redis内存管理 - 庄全🥚</title>
+<meta property="og:title" content="Redis内存管理 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    
+    <h1 class="article-title">Redis内存管理</h1>
+    
+
+    
+    <span class="article-date">December 2, 2019</span>
+    
+
+    <div class="article-content">
+      <p>本文源于LeetCode上遇到的一道题<a href="https://leetcode.com/problems/lru-cache/">LRU Cache</a>, 第一次听说LRU这个词还是在大三操作系统课上, 操作系统在发生缺页异常之后会进行页面置换, LRU正是几个页面置换算法之一。正巧, Redis的内存管理也用到了LRU算法, 故借此机会拓展开来阅读一下Redis内存管理的源码以及详细介绍一下LRU算法的实现。</p>
+<p>本文参考的源码是Redis 3.0</p>
+<h2 id="配置项说明">
+  配置项说明
+  <a class="anchor" href="#%e9%85%8d%e7%bd%ae%e9%a1%b9%e8%af%b4%e6%98%8e">#</a>
+</h2>
+<p><code>redis.conf</code>中有两个和内存管理相关的配置项: <code>maxmemory</code> 和 <code>maxmemory-policy</code>。这两个配置的主要意义在于控制内存的精细化使用，尤其适用于冷热数据较为明显的业务场景。如读写比超过10:1的高并发缓存系统等</p>
+<h3 id="maxmemory">
+  maxmemory
+  <a class="anchor" href="#maxmemory">#</a>
+</h3>
+<p><code>maxmemory</code> 定义了可供使用的最大内存字节数上限, 当达到设定的阈值后, Redis会根据设定的<code>maxmemory-policy</code>内存驱逐策略对keys进行清理.</p>
+<p>有两个比较值得关注的点:</p>
+<ul>
+<li>缺省值是0</li>
+<li>针对32位机器内存不会超过4GB这一特性,无论设置的是什么,Redis都把最大可用内存字节数控制在了3GB且默认选取了<code>REDIS_MAXMEMORY_NO_EVICTION</code>这一内存驱逐策略</li>
+</ul>
+<p>以上讨论所涉及相关代码片段如下:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//redis.h
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> redisServer {
+    ...
+    <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">long</span> <span style="color:#66d9ef">long</span> maxmemory;   <span style="color:#75715e">/* Max number of memory bytes to use */</span>
+    <span style="color:#66d9ef">int</span> maxmemory_policy;           <span style="color:#75715e">/* Policy for key eviction */</span>
+}
+
+<span style="color:#75715e">#define REDIS_DEFAULT_MAXMEMORY 0
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//内存驱逐策略
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define REDIS_MAXMEMORY_VOLATILE_LRU 0
+</span><span style="color:#75715e">#define REDIS_MAXMEMORY_VOLATILE_TTL 1
+</span><span style="color:#75715e">#define REDIS_MAXMEMORY_VOLATILE_RANDOM 2
+</span><span style="color:#75715e">#define REDIS_MAXMEMORY_ALLKEYS_LRU 3
+</span><span style="color:#75715e">#define REDIS_MAXMEMORY_ALLKEYS_RANDOM 4
+</span><span style="color:#75715e">#define REDIS_MAXMEMORY_NO_EVICTION 5
+</span><span style="color:#75715e">#define REDIS_DEFAULT_MAXMEMORY_POLICY REDIS_MAXMEMORY_NO_EVICTION
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">//redis.c
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> redisServer server; <span style="color:#75715e">/* server global state */</span>
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initServerConfig</span>() {
+    server.arch_bits <span style="color:#f92672">=</span> (<span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">long</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">?</span> <span style="color:#ae81ff">64</span> <span style="color:#f92672">:</span> <span style="color:#ae81ff">32</span>; <span style="color:#75715e">//32 or 64位架构
+</span><span style="color:#75715e"></span>    server.maxmemory <span style="color:#f92672">=</span> REDIS_DEFAULT_MAXMEMORY;
+    server.maxmemory_policy <span style="color:#f92672">=</span> REDIS_DEFAULT_MAXMEMORY_POLICY; <span style="color:#75715e">//默认不驱逐
+</span><span style="color:#75715e"></span>    ...
+    <span style="color:#75715e">//针对32位机器内存不会超过4GB这一特性,无论设置的是什么,Redis都把最大可用内存字节数控制在了3GB且默认选取了`REDIS_MAXMEMORY_NO_EVICTION`这一内存驱逐策略
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (server.arch_bits <span style="color:#f92672">==</span> <span style="color:#ae81ff">32</span> <span style="color:#f92672">&amp;&amp;</span> server.maxmemory <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+        redisLog(REDIS_WARNING,<span style="color:#e6db74">&#34;Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemory limit with &#39;noeviction&#39; policy now.&#34;</span>);
+        server.maxmemory <span style="color:#f92672">=</span> <span style="color:#ae81ff">3072LL</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">1024</span><span style="color:#f92672">*</span><span style="color:#ae81ff">1024</span>); <span style="color:#75715e">/* 3 GB */</span>
+        server.maxmemory_policy <span style="color:#f92672">=</span> REDIS_MAXMEMORY_NO_EVICTION;
+    }
+}
+</code></pre></div><h3 id="maxmemory-policy">
+  maxmemory-policy
+  <a class="anchor" href="#maxmemory-policy">#</a>
+</h3>
+<p><code>maxmemory-policy</code>定义了内存在达到<code>maxmemory</code>规定的字节数以后所使用的key清理策略, 默认是不驱逐(<code>noeviction</code>)。有如下六种策略：</p>
+<ul>
+<li>volatile-lru</li>
+</ul>
+<p>remove the key with an expire set using an LRU algorithm</p>
+<p>对满足LRU算法且设置了过期时间的key进行清理</p>
+<ul>
+<li>allkeys-lru</li>
+</ul>
+<p>remove any key accordingly to the LRU algorithm</p>
+<p>对满足LRU算法的任意key进行清理</p>
+<ul>
+<li>volatile-random</li>
+</ul>
+<p>remove a random key with an expire set</p>
+<p>对设置了过期的key任意清理key</p>
+<ul>
+<li>allkeys-random</li>
+</ul>
+<p>remove a random key, any key</p>
+<p>任意key随机清理</p>
+<ul>
+<li>volatile-ttl</li>
+</ul>
+<p>remove the key with the nearest expire time (minor TTL)</p>
+<p>按照剩余过期时间从小到大排序依次清理</p>
+<ul>
+<li>noeviction</li>
+</ul>
+<p>don&rsquo;t expire at all, just return an error on write operations</p>
+<p>不清理内存，仅仅对写操作报错</p>
+<h2 id="lru">
+  LRU
+  <a class="anchor" href="#lru">#</a>
+</h2>
+<p><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_%28LRU%29">LRU</a>(Least Recently Used)：最近最少使用策略，言外之意就是最近比较少使用的优先淘汰。</p>
+<h3 id="思路">
+  思路
+  <a class="anchor" href="#%e6%80%9d%e8%b7%af">#</a>
+</h3>
+<ul>
+<li>涉及到频繁的内存迁移，插入删除操作较多，用链表来维护LRU结构</li>
+<li>针对链表查找O(N)的时间复杂度劣势，引入散列表来维护key在链表中的位置</li>
+</ul>
+<p>时间复杂度: O(1)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LRUCache</span>
+{
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    list<span style="color:#f92672">&lt;</span>pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> l; <span style="color:#75715e">//node =&gt; &lt;key,value&gt;
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> size; <span style="color:#75715e">//当前长度
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> cap; <span style="color:#75715e">//可容纳的容量
+</span><span style="color:#75715e"></span>    unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, list<span style="color:#f92672">&lt;</span>pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;::</span>iterator<span style="color:#f92672">&gt;</span> um; <span style="color:#75715e">// &lt;key, key在链表中迭代器位置&gt;
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    LRUCache(<span style="color:#66d9ef">int</span> capacity) {
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>cap <span style="color:#f92672">=</span> capacity;
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    }
+
+    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get</span>(<span style="color:#66d9ef">int</span> key) {
+        <span style="color:#66d9ef">auto</span> umPos <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.find(key);
+        <span style="color:#66d9ef">if</span> (umPos <span style="color:#f92672">==</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.end()) {
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+        }
+
+        <span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> umPos<span style="color:#f92672">-&gt;</span>second<span style="color:#f92672">-&gt;</span>second;
+
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.erase(umPos<span style="color:#f92672">-&gt;</span>second);
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.push_front(make_pair(key, value));
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.erase(umPos);
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um[key] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.begin();
+
+        <span style="color:#66d9ef">return</span> value;
+    }
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span>(<span style="color:#66d9ef">int</span> key, <span style="color:#66d9ef">int</span> value) {
+        <span style="color:#75715e">//先搜索, 如果找到删除
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//如果没找到, 判断是否size &gt;= cap，如果reached，则删除末尾结点
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">auto</span> umPos <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.find(key);
+        <span style="color:#66d9ef">if</span> (umPos <span style="color:#f92672">!=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.end()) {
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.erase(umPos<span style="color:#f92672">-&gt;</span>second);
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.erase(umPos);
+        } <span style="color:#66d9ef">else</span> {
+            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>size <span style="color:#f92672">&gt;=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>cap) {
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um.erase(<span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.rbegin()<span style="color:#f92672">-&gt;</span>first);
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.pop_back();
+            } <span style="color:#66d9ef">else</span> {
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>size<span style="color:#f92672">++</span>;
+            }
+        }
+
+        <span style="color:#75715e">//新值插入头结点且更新在散列表中的位置
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.push_front(make_pair(key, value));
+        <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>um[key] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>l.begin();
+    }
+};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    <span style="color:#66d9ef">auto</span> cache <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LRUCache(<span style="color:#ae81ff">2</span>);
+
+    cout <span style="color:#f92672">&lt;&lt;</span> cache<span style="color:#f92672">-&gt;</span>get(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+    cache<span style="color:#f92672">-&gt;</span>put(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">6</span>);
+    cout <span style="color:#f92672">&lt;&lt;</span> cache<span style="color:#f92672">-&gt;</span>get(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+    cache<span style="color:#f92672">-&gt;</span>put(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>);
+    cache<span style="color:#f92672">-&gt;</span>put(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>);
+    cout <span style="color:#f92672">&lt;&lt;</span> cache<span style="color:#f92672">-&gt;</span>get(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+    cout <span style="color:#f92672">&lt;&lt;</span> cache<span style="color:#f92672">-&gt;</span>get(<span style="color:#ae81ff">2</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>个人觉得这道题并不能算上Medium的难度，写完以后打脸了，这道题并不是难在思路，难在代码量上，我特意用秒表计了个时，标准的50行代码20分钟内白板上bugfree，基于这个背景确实很符合Medium难度。</p>
+<h3 id="redis-lru的实现">
+  Redis LRU的实现
+  <a class="anchor" href="#redis-lru%e7%9a%84%e5%ae%9e%e7%8e%b0">#</a>
+</h3>
+
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

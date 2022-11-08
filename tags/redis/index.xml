@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on 八股文</title>
+    <link>https://justzyx.github.io/tags/redis/</link>
+    <description>Recent content in Redis on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 02 Dec 2019 23:48:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis内存管理</title>
+      <link>https://justzyx.github.io/blog/2019-12-04-redis-memory-management/</link>
+      <pubDate>Mon, 02 Dec 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-12-04-redis-memory-management/</guid>
+      <description>本文源于LeetCode上遇到的一道题LRU Cache, 第一次听说LRU这个词还是在大三操作系统课上, 操作系统在发生缺页异常之后会进行页面置换, LRU正是几个页面置换算法之一。正巧, Redis的内存管理也用到了LRU算法, 故借此机会拓展开来阅读一下Redis内存管理的源码以及详细介绍一下LRU算法的实现。
+本文参考的源码是Redis 3.0
+配置项说明 #  redis.conf中有两个和内存管理相关的配置项: maxmemory 和 maxmemory-policy。这两个配置的主要意义在于控制内存的精细化使用，尤其适用于冷热数据较为明显的业务场景。如读写比超过10:1的高并发缓存系统等
+maxmemory #  maxmemory 定义了可供使用的最大内存字节数上限, 当达到设定的阈值后, Redis会根据设定的maxmemory-policy内存驱逐策略对keys进行清理.
+有两个比较值得关注的点:
+ 缺省值是0 针对32位机器内存不会超过4GB这一特性,无论设置的是什么,Redis都把最大可用内存字节数控制在了3GB且默认选取了REDIS_MAXMEMORY_NO_EVICTION这一内存驱逐策略  以上讨论所涉及相关代码片段如下:
+//redis.h struct redisServer { ... unsigned long long maxmemory; /* Max number of memory bytes to use */ int maxmemory_policy; /* Policy for key eviction */ } #define REDIS_DEFAULT_MAXMEMORY 0  //内存驱逐策略 #define REDIS_MAXMEMORY_VOLATILE_LRU 0 #define REDIS_MAXMEMORY_VOLATILE_TTL 1 #define REDIS_MAXMEMORY_VOLATILE_RANDOM 2 #define REDIS_MAXMEMORY_ALLKEYS_LRU 3 #define REDIS_MAXMEMORY_ALLKEYS_RANDOM 4 #define REDIS_MAXMEMORY_NO_EVICTION 5 #define REDIS_DEFAULT_MAXMEMORY_POLICY REDIS_MAXMEMORY_NO_EVICTION  //redis.</description>
+    </item>
+    
+  </channel>
+</rss>

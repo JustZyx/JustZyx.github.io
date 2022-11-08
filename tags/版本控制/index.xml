@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>版本控制 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/</link>
+    <description>Recent content in 版本控制 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 25 Mar 2018 11:49:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git中低频操作</title>
+      <link>https://justzyx.github.io/blog/2018-03-25-git-common-operations/</link>
+      <pubDate>Sun, 25 Mar 2018 11:49:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-03-25-git-common-operations/</guid>
+      <description>背景 #  Git高频操作天天用早就烂熟于心了，此文仅仅记录Git中低频操作。大致符合以下两个特点：
+ 不常用且易忘 知识盲区，未曾使用过  操作列表 #  删除分支 #    删除本地分支
+git branch //列出本地所有分支 git branch -d feature/branchName //删除其中一个分支 git branch | grep &amp;#34;branchName&amp;#34; | xargs git branch -D //批量删除带有branchName关键词的分支   删除远程分支
+git branch -r //列出所有远程分支 git push origin :branchName //删除一个远程分支 git push --delete origin branchName   分支同步 #   git rebase  </description>
+    </item>
+    
+  </channel>
+</rss>

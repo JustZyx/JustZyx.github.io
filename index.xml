@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>八股文</title>
+    <link>https://justzyx.github.io/</link>
+    <description>Recent content on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 08 Nov 2022 23:40:24 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python</title>
+      <link>https://justzyx.github.io/docs/xmind/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://justzyx.github.io/docs/xmind/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>算法解题模板</title>
+      <link>https://justzyx.github.io/blog/2022-11-08-algorithm-template/</link>
+      <pubDate>Tue, 08 Nov 2022 23:40:24 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-11-08-algorithm-template/</guid>
+      <description>划重点, 天道酬勤, 勤的同时得长记性! 本文总结了一些算法心得
+动态规划 #  动态规划相比于暴力算法，主要的优点在于消灭重复计算。通常可以分为如下几个步骤：
+ 定义子问题「definition」: 初始化「initialization」: 找出一般的情况, 比如 n = 1, n = 2 如何求解 转移方程「transfer」: 找出n从1到2之间的内在规律, 并且推导到任意n  难点在于分析题意.
+深度优先搜索 #   找到出发的点, 通常是满足某种条件的点或者直接从左上角之类 抽象子问题 判断子问题的边界 递归的进行下一个子问题  拓扑排序 #  </description>
+    </item>
+    
+    <item>
+      <title>胡言乱语</title>
+      <link>https://justzyx.github.io/gibberish/</link>
+      <pubDate>Fri, 28 Oct 2022 15:38:24 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/gibberish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Panic Cases</title>
+      <link>https://justzyx.github.io/blog/2022-10-02-go-panic/</link>
+      <pubDate>Sun, 02 Oct 2022 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-10-02-go-panic/</guid>
+      <description>本文尽可能的枚举较为常见的 Panic 案例。
+并发 #  func main() { c := make(chan int, 10) c &amp;lt;- 1 close(c) c &amp;lt;- 2 for i := range c { fmt.Print(i) } } panic: send on closed channel goroutine 1 [running]: main.main() /Users/shoueishin/Github/snippets/go/test.go:9 +0x56 exit status 2 以上代码我们得出以下几点:
+ 只有发送者才能关闭信道，而接收者不能。向一个已经关闭的信道发送数据会引发 panic close有缓冲区的channel以后, 不可写但还可以读  </description>
+    </item>
+    
+    <item>
+      <title>前七年职业生涯总结与反思</title>
+      <link>https://justzyx.github.io/blog/2022-09-28-methodology/</link>
+      <pubDate>Wed, 28 Sep 2022 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-09-28-methodology/</guid>
+      <description>如果从15年9月实习开始算， 截止到七月份从鹅厂离职， 满打满算已经快七年时光了。在感慨岁月如梭的间隙， 也想对这七年的技术生涯做一些回顾和总结， 为下一段技术生涯提供一些准则和有价值的东西。 如果有幸能帮助到更多的人， 那则是意外之喜。
+本文基于本人真实经历， 侧重总结如下几个问题 「暂时只想到这么多」:
+ 如何建立自己的竞争力 架构设计的一些通用准则和实践经验 如何招聘工程师  如何建立自己的竞争力 #  这方面自己做的很不好， 至少距离七年前的期望差距有点大。 古人云学而不思则罔， 思而不学则殆。从这句话我们可以得到两个关键词: 学习+思考。
+学习的热情【好奇心】 #  学习+思考有个很重要的前提：要有一颗好奇心。好奇心是终身学习的源动力。这也是为什么有些同学天赋很好，但是后来落后的原因之一，因为不想了。
+我非常享受掌控代码的感觉， 而这源于我想去学想去了解， 相比于同年限的人， 一方面源于好奇心， 另一方面源于丰富的阅历， 我懂的东西确实要比别人多一些。 去年年会， 张小龙说过一句话对我触动很大， &amp;ldquo;我们要保护心里的光和亮， 因为它可能会用来照亮别人&amp;rdquo;。 我觉得好奇心就是工程师心里的光， 可以照亮技术的道路。 另外， 现代社会的分工从某种意义上来说弱化了工程师的竞争力， 我觉得工程师不应该给自己设限， 从而局限在某一门具体的语言， 某一项具体的技术上。
+学习的方法 #  具备好奇心以后，我们会学习一个具体的东西，比如一门技术。很多人会很粗暴的唯结果论，xx 学得不好就是智商差距。这些年共事的同事不乏清北华五名校本硕博，但据我感受大家并没有感受到明显的智商差距，更多是体现在技巧上的差距，而技巧是可以通过学习积累来优化的。
+很长一段时间我学习技术的方法都是碎片化学习， 遇到一个知识盲区学习一个， 这种学习方法非常低效， 类似于在一个巨大的数组中做线性搜索。
+后来总结出来无论学啥东西无外乎几点， 是什么、怎么做、为什么这三点。 另外结合思维导图可以在大脑中形成体系化结构。 大脑中只存索引可以节省大量的空间开销。
+我们以 Redis 为例， 按照思维导图进行知识结构分类无外乎如下几点:
+  线程模型 数据结构 持久化 网络框架   再以其中数据结构为例:</description>
+    </item>
+    
+    <item>
+      <title>记一次在线测评</title>
+      <link>https://justzyx.github.io/blog/2022-09-23-bullet-labs-interview/</link>
+      <pubDate>Fri, 23 Sep 2022 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-09-23-bullet-labs-interview/</guid>
+      <description>下午本来约了头条二面, 结果面试官请假在医院, HR打电话过来改约了. 于是下午空了出来, 就把原定于明天做的在线测评提到了今天.
+这是一家Web3领域的公司, 可以提供Full Remote Backend Developer岗位. 由于饱受独居和通勤之苦, 可以Remote这个点很是吸引我. 不过进入到正式面试流程之前需要先做个在线测评.
+测评在hackerrank上进行, 总共14道题, 13道多项选择题, 一道Coding题. 选择题主要是一些分布式、微服务、Web安全和Linux相关的基础知识. Coding题是一道比较典型的爬虫题, 感觉可能是面试官看到我简历里写过爬虫, 特意准备的, 另外想考察一下编码风格和代码基础
+需求分析 #    输入
+limit
+通过 REST API 请求远端数据
+https://jsonmock.hackerrank.com/api/articles?page=&amp;lt;page_num&amp;gt; eg: 样例数据
+  条件限制
+ title、story_title 都为 null 的丢弃 num_comments 相同的按字典序排序    输出
+输出评论数最高的 limit 篇文章名
+  思路 #  题目很简单, 基本上所有的爬虫脚本, 我们都可以归纳为如下几个步骤:
+ crawler: 爬虫模块, 获取数据 filter: 过滤模块, 过滤不符合条件的脏数据 ranker: 排序模块, 对结果集按给定字段排序 formater: 格式化模块, 格式化输出最终结果  在实现上可以采用串行和并行两种实现方式, 代码分别如下:</description>
+    </item>
+    
+    <item>
+      <title>职业生涯回顾</title>
+      <link>https://justzyx.github.io/blog/2022-08-01-career-thinking/</link>
+      <pubDate>Mon, 03 Aug 2020 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-08-01-career-thinking/</guid>
+      <description>本文回顾自己的三段职业生涯, 并总结一下多年踩坑经验
+腾讯科技(上海)有限公司 #  做了些啥 #  在腾讯这两年主要负责游戏的营销体系建设。
+为什么离职 #   上海疫情一个人被困在出租屋里两个多月, 孤独感、压抑感精神格外累 毕业到现在一直没有休息过, 身体和精神都挺累的 父亲疫情期间住院几个月, 一直没能回家看他, 趁这次机会好好陪陪家人  经验教训 #  结合我多年踩坑(失败)经验, 针对自己任何想做的事情, 我会逐一问自己如下三个问题, 如果三个答案都是 YES, 那这件事基本上就能做成做好
+ 愿不愿意做 能不能做 有没有机会做  愿不愿意做 #  通常衡量标准是付出与收益是否合理, 主要参考市场定价
+能不能做 #  这一点需要对自身能力圈有个清醒的认知, 通常需要提前储备与之相对应的能力和经验, 知道的越多, 预判的越准
+有没有机会做 #  这个也是传统意义上的天时, 一种是无法预测的机会, 另一种是</description>
+    </item>
+    
+    <item>
+      <title>AngularJs Git 提交规范</title>
+      <link>https://justzyx.github.io/blog/2020-03-19-angular-js-git-commit-conventions/</link>
+      <pubDate>Thu, 19 Mar 2020 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2020-03-19-angular-js-git-commit-conventions/</guid>
+      <description>在给Github上开源项目做出Contribution的时候我们要遵循其所规定提交规范。如Redis、AngularJs等项目均有自己的Contribution约束。也有一些学习资料类的高星项目缺乏提交约束，此时我一般会遵循AngularJs的提交规范来PR，个人觉得这份规范具有很强的借鉴性，比较适合作为团队合作的规范，鉴于尚无中文版本，所以我打算翻译一下以供大家参考：
+格式 #  &amp;lt;type&amp;gt;(&amp;lt;scope&amp;gt;): &amp;lt;subject&amp;gt; //消息头 &amp;lt;BLANK LINE&amp;gt; //空行 &amp;lt;body&amp;gt; //正文 &amp;lt;BLANK LINE&amp;gt; //空行 &amp;lt;footer&amp;gt; //消息尾  为了兼容多种工具方便阅读git message，禁止每一行超过100个字符！ 一条commit message包含了header、body和footer，它们之间用空行分隔。  回滚 #  如果当前提交回滚了上一次的提交，它的头部应该以revert: 开头，紧接着是被回滚的提交记录的头部。body应该描述成This reverts commit &amp;lt;hash&amp;gt;.，hash是被回滚的提交记录的SHA值。
+消息头 #  消息头是单独的一行，对改动作出了简洁的描述，包含了type，scope(可选)以及标题
+type(类型) #   添加功能特性：feat (feature) 修复BUG：fix (bug fix) 添加文档：docs (documentation) 代码风格：style (formatting, missing semi colons, …) 重构：refactor 添加测试用例：test (when adding missing tests) chore (maintain)  scope(改动涉及区域) #  scope要能够表明改动的区域。举个例子, $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, etc&amp;hellip;这种按照模块来划分，如果是后端的话，通常会分层架构，可以按照接口粒度(user/login), 也可以按照service(UserService)、model(UserModel)的粒度</description>
+    </item>
+    
+    <item>
+      <title>全排列</title>
+      <link>https://justzyx.github.io/blog/2020-02-02-permutation/</link>
+      <pubDate>Sun, 02 Feb 2020 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2020-02-02-permutation/</guid>
+      <description>回溯算法经常会结合DFS一起出现，leetcode上一道46.全排列就是回溯+DFS+剪枝思想的典型应用。
+DFS #  这道题最常规的一种解法是DFS，然后通过choose or not choose来剪枝回溯。说的比较糙，如果领会不了建议拿一个case用GDB跟一下下面的代码，自己跟一遍胜过千言万语。
+#include &amp;lt;vector&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;unordered_map&amp;gt; using namespace std; void dfs(vector&amp;lt;int&amp;gt;&amp;amp; nums, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; ret, vector&amp;lt;int&amp;gt;&amp;amp; permutation, unordered_map&amp;lt;int, int&amp;gt;&amp;amp; choosed) { for (int i = 0; i&amp;lt;nums.size(); i++) { if (permutation.size()==nums.size()) { ret.push_back(permutation); return; } if (choosed[nums[i]]) { //已经选过了  continue; } permutation.push_back(nums[i]); choosed[nums[i]] = 1; dfs(nums, ret, permutation, choosed); //回溯  permutation.pop_back(); choosed[nums[i]] = 0; } } vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; permute(vector&amp;lt;int&amp;gt;&amp;amp; nums) { vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; ret; vector&amp;lt;int&amp;gt; permutation; unordered_map&amp;lt;int, int&amp;gt; choosed; for (int i = 0; i&amp;lt;nums.</description>
+    </item>
+    
+    <item>
+      <title>Redis内存管理</title>
+      <link>https://justzyx.github.io/blog/2019-12-04-redis-memory-management/</link>
+      <pubDate>Mon, 02 Dec 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-12-04-redis-memory-management/</guid>
+      <description>本文源于LeetCode上遇到的一道题LRU Cache, 第一次听说LRU这个词还是在大三操作系统课上, 操作系统在发生缺页异常之后会进行页面置换, LRU正是几个页面置换算法之一。正巧, Redis的内存管理也用到了LRU算法, 故借此机会拓展开来阅读一下Redis内存管理的源码以及详细介绍一下LRU算法的实现。
+本文参考的源码是Redis 3.0
+配置项说明 #  redis.conf中有两个和内存管理相关的配置项: maxmemory 和 maxmemory-policy。这两个配置的主要意义在于控制内存的精细化使用，尤其适用于冷热数据较为明显的业务场景。如读写比超过10:1的高并发缓存系统等
+maxmemory #  maxmemory 定义了可供使用的最大内存字节数上限, 当达到设定的阈值后, Redis会根据设定的maxmemory-policy内存驱逐策略对keys进行清理.
+有两个比较值得关注的点:
+ 缺省值是0 针对32位机器内存不会超过4GB这一特性,无论设置的是什么,Redis都把最大可用内存字节数控制在了3GB且默认选取了REDIS_MAXMEMORY_NO_EVICTION这一内存驱逐策略  以上讨论所涉及相关代码片段如下:
+//redis.h struct redisServer { ... unsigned long long maxmemory; /* Max number of memory bytes to use */ int maxmemory_policy; /* Policy for key eviction */ } #define REDIS_DEFAULT_MAXMEMORY 0  //内存驱逐策略 #define REDIS_MAXMEMORY_VOLATILE_LRU 0 #define REDIS_MAXMEMORY_VOLATILE_TTL 1 #define REDIS_MAXMEMORY_VOLATILE_RANDOM 2 #define REDIS_MAXMEMORY_ALLKEYS_LRU 3 #define REDIS_MAXMEMORY_ALLKEYS_RANDOM 4 #define REDIS_MAXMEMORY_NO_EVICTION 5 #define REDIS_DEFAULT_MAXMEMORY_POLICY REDIS_MAXMEMORY_NO_EVICTION  //redis.</description>
+    </item>
+    
+    <item>
+      <title>一些基础知识的回顾</title>
+      <link>https://justzyx.github.io/blog/2019-11-19-review-cs-basic-knowledge/</link>
+      <pubDate>Tue, 19 Nov 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-11-19-review-cs-basic-knowledge/</guid>
+      <description>进程 #  进程管理单元(process control block) #  进程的一部分，进程存在的标志，记录管理进程的基本情况和运行情况：
+ 进程描述信息：pid &amp;amp; uid 进程控制和管理信息：进程当前状态及优先级等 资源分配情况：代码段、数据段以及堆栈信息 寄存器：上下文切换的时候保存寄存器的值  进程的本质 #  进程的本质是一个执行中的程序实体，是对一个正在运行的程序的一种抽象。
+ 一个独立的逻辑控制流，提供一个假象，我们的程序在独占CPU 一个私有的地址空间，提供一个假象，我们的程序在独占存储器系统  如何创建一个进程 #  pid_t Fork(void) { pid_t pid; if ((pid = fork()) &amp;lt; 0) { fprintf(stderr fork error, &amp;#34;: %s\n&amp;#34;, strerror(errno)); exit(0); } return pid; } fork函数被父进程调用一次却返回两次 #  一次是返回给子进程0，一次是返回给父进程子进程的pid，可以区分程序逻辑是在子进程还是父进程执行的
+进程树 #  描述进程之间的父子关系，类似于图论中的有向树
+brew install pstree 进程通信方式 #   共享内存 消息传递 管道  </description>
+    </item>
+    
+    <item>
+      <title>深入理解Slice</title>
+      <link>https://justzyx.github.io/blog/2019-10-10-go-array-and-slice/</link>
+      <pubDate>Wed, 09 Oct 2019 17:35:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-10-10-go-array-and-slice/</guid>
+      <description>Go和C数组的区别 #   在Go中，数组名代表一组值，而C数组名是数组首地址 在Go中，数组当做参数是值拷贝，会把数组中所有的元素都拷贝过去 在GO中，数组长度也是类型的一部分，如[10]int和[20]int是不同的数据类型  Slice原理 #  struct #  slice的结构大致如下：
+type slice struct { ptr *Elem //指向底层数组的指针  len int //可容纳最大长度  cap int //申请底层数组的长度 } 以语句 s := make([]int, 5, 10) 为例，包含如下信息：
+ s指向了一个类型为[10]int的数组 s当前容量为5，初始值为5个0，可扩容至10 如make不指明cap，则cap和len一致  slicing #  对一个slice进行切片，不会进行值拷贝，只是在底层数组上指针的移动。所以如果对切片后的slice进行修改操作，原slice也会相应的变化。
+d := []byte{&amp;#39;r&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;d&amp;#39;} e := d[2:] // e == []byte{&amp;#39;a&amp;#39;, &amp;#39;d&amp;#39;} e[1] = &amp;#39;m&amp;#39; // e == []byte{&amp;#39;a&amp;#39;, &amp;#39;m&amp;#39;} // d == []byte{&amp;#39;r&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;m&amp;#39;} 扩容len #  s := make([]int, 5, 200) //len(s) == 5 s = s[:cap(s)] //len(s) == 200  slice不能扩容超过cap，既不能超过底层数组的长度 下标访问，index不能超过len，否则会runtime panic  扩容cap #  如果cap不够，此时会发生内存拷贝和迁移，内置append函数中就包含了动态扩容，以slice s为例，大致过程如下：</description>
+    </item>
+    
+    <item>
+      <title>存储管理</title>
+      <link>https://justzyx.github.io/blog/2019-10-01-memory-management/</link>
+      <pubDate>Tue, 01 Oct 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-10-01-memory-management/</guid>
+      <description>连续内存分配 #  计算机体系结构和内存层次 #  计算机系统包括CPU、内存、IO设备和总线，如下图：  地址总线一般是32位(4个字节)，换言之CPU一次读写是4个字节起步 内存是以字节为单位进行访问的，每一个字节有自己的物理地址 外存有扇区编号，一个扇区是512字节 MMU的作用是把逻辑地址空间转换为物理地址空间  由于速度、容量和价格三者的矛盾，所以出现了分层存储体系: 高速缓存、内存、外存。CPU的寻址过程大致就是先访问L1、L2高速cache，如未命中则通过地址总线去访问内存，如果内存发生缺页异常再去访问外存。
+地址空间&amp;amp;地址生成 #  地址空间是一个进程可以寻址内存的一套地址集合，每个进程都有一个自己的地址空间。</description>
+    </item>
+    
+    <item>
+      <title>合并有序数据结构</title>
+      <link>https://justzyx.github.io/blog/2019-08-28-merge-sorted-ds/</link>
+      <pubDate>Wed, 28 Aug 2019 20:49:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-08-28-merge-sorted-ds/</guid>
+      <description>有序数据结构的合并是个基础操作，在很多算法中有着应用，比如归并排序先分治再归并，其中的归并操作就是合并有序数组的过程，掌握基本功对于后续复杂算法的理解有着非常重要的帮助
+题目描述 #  easy #   88. Merge Sorted Array 21. Merge Two Sorted Lists 617. Merge Two Binary Trees  hard #   23. Merge k Sorted Lists  思路分析 #  合并有序数组 #  func merge(nums1 []int, m int, nums2 []int, n int) { i, j, k := m-1, n-1, m+n-1 for j &amp;gt;= 0 { if i &amp;gt;= 0 &amp;amp;&amp;amp; nums1[i] &amp;gt; nums2[j] { nums1[k] = nums1[i] i = i-1 } else { nums1[k] = nums2[j] j = j-1 } k = k-1 } } 倒序遍历，相继比较nums1和nums2，取大的放到顺序位置</description>
+    </item>
+    
+    <item>
+      <title>静态程序构建过程</title>
+      <link>https://justzyx.github.io/blog/2018-07-24-static-program-life-cycle/</link>
+      <pubDate>Tue, 24 Jul 2018 17:34:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-07-24-static-program-life-cycle/</guid>
+      <description>静态程序生命周期 #  以K&amp;amp;R &amp;laquo;C程序设计语言&amp;raquo; 中 hello.c 为例
+#inclue &amp;lt;stdio.h&amp;gt; int main() { printf(&amp;quot;Hello World\n&amp;quot;); return 0; } gcc hello.c -o hello ./hello 如上实现了 hello.c C语言源文件到机器可执行的二进制目标文件 hello的过程。这个过程大致经历了如下步骤：
+ 源文件 (.c/.cpp/.h) 预处理 (.c/.cpp/.h =&amp;gt; ./i)  gcc -E hello.c -o hello.i 编译器 (./i =&amp;gt; ./s)：把预处理完的文件进行一系列的词法分析、语法分析、语义分析及优化后生成相应的汇编代码  gcc -S hello.i -o hello.s 汇编器 (./s =&amp;gt; .out/.o)：汇编器将汇编语言翻译成机器语言指令，并打包成可重定位目标程序 hello.o  gcc -c hello.s -o hello.o 链接器 (.o =&amp;gt; .exe/.out)：链接可重定位的二进制文件，形成完整的逻辑地址，生成可执行目标文件 装载：装载进内存，MMU把逻辑地址映射成物理地址  多文件构建系统 #    make (Makefile) 项目变大之后，源文件一个一个去手动去编译显然不现实，make就是为了解决这个问题，它是一个自动化编译的工具，可以实现一条命令编译所有源文件。 但是前提它需要知道源文件之间的依赖关系，记录这些依赖关系规则的文件就是Makefile文件。</description>
+    </item>
+    
+    <item>
+      <title>支付设计</title>
+      <link>https://justzyx.github.io/blog/2018-05-23-repayment/</link>
+      <pubDate>Wed, 23 May 2018 17:35:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-05-23-repayment/</guid>
+      <description>背景 #  现金贷APP内有个立即还款的入口，业务入口在我方，实际扣款行为依赖于银行系统
+思路 #  确认支付通道是同步扣款还是异步扣款，两者区别在于：
+ 如果是同步扣款，则业务方发起扣款请求得到的响应可当作实际支付结果并告知用户 如果是异步扣款，则仅仅只代表支付通道成功收到发起扣款的请求，实际扣款处理结果需异步通知回调业务方。  同步扣款 #   $httpCode == 200  业务code为0(成功)，方可认为扣款成功且可信 否则均当作失败，并告知用户，可让用户重新发起   $httpCode != 200  不可粗暴的当作失败让用户重新发起支付，此时应当作一种支付确认中的状态，在出结果之前对用户再次发起还款请求应作限制，原因在于有可能支付通道已实际扣款成功，只是返回超时(504)了而已。 准确的支付结果需依赖支付通道的异步回调为准    异步扣款 #   $httpCode == 200  业务code为0(成功) =&amp;gt;支付通道成功接收到扣款请求, 告知用户支付结果确认中, 等待异步回调 业务code不为0 =&amp;gt; 支付通道返回扣款请求错误，具体原因具体对待，处理完毕重新发起   $httpCode != 200 =&amp;gt; 发起失败，需重试，重试需建立在以下前提  重试发起方为业务方，不由用户发起，用户可见状态应为中间态：支付结果确认中 同笔支付记录双方要保持幂等性，即使支付通道成功扣款，但是返回了504，业务方仍然应做一步补偿重试直到成功或到达最大补偿次数    TIPS #   限频，在出最终支付结果之前，对再次发起要有严格限制 幂等(一致性)，同笔支付记录重试要保证幂等性，如已成功处理直接返回成功即可，不可当作新的支付记录处理 分布式事务，所有支付行为均先落地，再发网络请求，最后异步更新结果，本地数据库操作禁止和网络请求包在一个事务里 监控，诸如长时间未接收到支付结果的支付记录要能主动探知能力，告警并处理 补偿机制，最大补偿次数的设定，人工介入的节点把握   2018.</description>
+    </item>
+    
+    <item>
+      <title>Git中低频操作</title>
+      <link>https://justzyx.github.io/blog/2018-03-25-git-common-operations/</link>
+      <pubDate>Sun, 25 Mar 2018 11:49:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-03-25-git-common-operations/</guid>
+      <description>背景 #  Git高频操作天天用早就烂熟于心了，此文仅仅记录Git中低频操作。大致符合以下两个特点：
+ 不常用且易忘 知识盲区，未曾使用过  操作列表 #  删除分支 #    删除本地分支
+git branch //列出本地所有分支 git branch -d feature/branchName //删除其中一个分支 git branch | grep &amp;#34;branchName&amp;#34; | xargs git branch -D //批量删除带有branchName关键词的分支   删除远程分支
+git branch -r //列出所有远程分支 git push origin :branchName //删除一个远程分支 git push --delete origin branchName   分支同步 #   git rebase  </description>
+    </item>
+    
+    <item>
+      <title>再谈MySQL索引</title>
+      <link>https://justzyx.github.io/blog/2018-03-14-share-mysql-index-from-query/</link>
+      <pubDate>Wed, 14 Mar 2018 10:25:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-03-14-share-mysql-index-from-query/</guid>
+      <description>前言 #  MySQL索引是一个老生常谈的话题，在开始本文之前希望大家都问自己几个问题：
+ 什么是索引？ 为什么索引可以加快查询速度？ 索引是不是越多越好，为什么？ 什么时候该建索引，什么时候不该建，判断的依据是什么？ 如何评价一条sql实际的执行效果？ b树和b+树的区别是啥？为什么最终选择了b+树这种数据结构？  如果您基础扎实，工程经验丰富，对上述几个问题非常清晰，那么希望老师傅帮忙Review一下本文，感激不尽。反之，我相信下面的内容应该多多少少能够给大家一点帮助。本文依托贷上钱业务库实际的例子将从以下三个方面来介绍一下MySQL的索引，力求深入浅出，老少咸宜：
+ 索引的原理 慢查询优化 贷上钱业务库的慢查以及改进方案  注：1.由于MySQL版本变化、实际数据量以及业务的特殊性等因素，本文所提及的所有建议及实操方案均有其特殊性，切不可生搬硬套，需具体问题具体分析。本文所举例子并不能涵盖所有case，但对培养定位慢查的思维过程有一定的以不变应万变效果。2. 本文默认使用InnoDB存储引擎
+索引的原理 #   我们都知道，MySQL能支持千万级，甚至亿级别的数据量，这么大的数据肯定不可能放在内存中，那么只能是在磁盘上了。 另外，我们也知道磁盘的读写开销远比内存读写开销大的多的多，如果是随机访问的话大约是10万倍级别的差距。 我们考虑一个问题，假设在10000个整数中查找某个整数，我们通常的做法是通过二叉搜索树，其平均复杂度是O(lgN)，时间复杂度已经相当优化，但这里我们忽略了一个关键的问题，复杂度模型是基于每次相同的操作成本来考虑的，数据库实现比较复杂，数据保存在磁盘上，而为了提高性能，每次又可以把部分数据读入内存来计算，因为我们知道访问磁盘的成本大概是访问内存的十万倍左右，所以简单的搜索树难以满足复杂的应用场景。  由此我们可以得出一个结论，查找速度取决于磁盘IO次数，而磁盘IO次数又取决于树的高度。那么为了满足高速查找的需求，我们是否可以构造一种高度可控的多路搜索树呢？这就是B+树。
+简述B+树运行过程 #  浅蓝色的块我们称之为一个磁盘块，可以看到每个磁盘块包含几个数据项（深蓝色所示）和指针（黄色所示），如磁盘块1包含数据项17和35，包含指针P1、P2、P3，P1表示小于17的磁盘块，P2表示在17和35之间的磁盘块，P3表示大于35的磁盘块。真实的数据存在于叶子节点即3、5、9、10、13、15、28、29、36、60、75、79、90、99。非叶子节点只不存储真实的数据，只存储指引搜索方向的数据项，如17、35并不真实存在于数据表中。
+如果要查找数据项29，那么首先会把磁盘块1由磁盘加载到内存，此时发生一次IO，在内存中用二分查找确定29在17和35之间，锁定磁盘块1的P2指针，内存时间因为非常短（相比磁盘的IO）可以忽略不计，通过磁盘块1的P2指针的磁盘地址把磁盘块3由磁盘加载到内存，发生第二次IO，29在26和30之间，锁定磁盘块3的P2指针，通过指针加载磁盘块8到内存，发生第三次IO，同时内存中做二分查找找到29，结束查询，总计三次IO。真实的情况是，3层的b+树可以表示上百万的数据，如果上百万的数据查找只需要三次IO，性能提高将是巨大的，如果没有索引，每个数据项都要发生一次IO，那么总共需要百万次的IO，显然成本非常非常高。
+性质 #    通过上面的分析，我们知道IO次数取决于b+数的高度h，假设当前数据表的数据为N，每个磁盘块的数据项的数量是m，则有h=㏒(m+1)N，当数据量N一定的情况下，m越大，h越小；而m = 磁盘块的大小 / 数据项的大小，磁盘块的大小也就是一个数据页的大小，是固定的，如果数据项占的空间越小，数据项的数量越多，树的高度越低。这就是为什么每个数据项，即索引字段要尽量的小，比如int占4字节，要比bigint8字节少一半。这也是为什么b+树要求把真实的数据放到叶子节点而不是内层节点，一旦放到内层节点，磁盘块的数据项会大幅度下降，导致树增高。当数据项等于1时将会退化成线性表。
+  当b+树的数据项是复合的数据结构，比如(name,age,sex)的时候，b+数是按照从左到右的顺序来建立搜索树的，比如当(张三,20,F)这样的数据来检索的时候，b+树会优先比较name来确定下一步的所搜方向，如果name相同再依次比较age和sex，最后得到检索的数据；但当(20,F)这样的没有name的数据来的时候，b+树就不知道下一步该查哪个节点，因为建立搜索树的时候name就是第一个比较因子，必须要先根据name来搜索才能知道下一步去哪里查询。比如当(张三,F)这样的数据来检索时，b+树可以用name来指定搜索方向，但下一个字段age的缺失，所以只能把名字等于张三的数据都找到，然后再匹配性别是F的数据了， 这个是非常重要的性质，即索引的最左匹配特性。
+  慢查询优化 #  提到慢查，当我还是小白的时候，老师傅一般都是粗暴的让我怼一个索引上去。但是如何判断一个索引应不应该加？如何评价索引的效果？
+ 尽可能选择区分度高的列作为索引，区分度公式是  count(distinct(column)/count(*) 表示字段不重复的比例，取值范围是(0,1]，唯一键的区分度为1，enum，tinyint等则区分度无限趋近于0。区分度越高扫描的记录数越少，反之越多，索引代价较高，一般需要join的字段索引区分度建议0.1以上，即平均1条扫描10条记录
+ 提到索引效果就不得不提查询优化神器 — EXPLAIN命令了。 其中rows是核心指标，绝大部分rows小的语句执行一定很快（有例外，下面会讲到）。所以优化语句基本上都是在优化rows。
+  最左前缀匹配原则 mysql会一直向右匹配直到遇到范围查询(&amp;gt;、&amp;lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &amp;gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整</description>
+    </item>
+    
+    <item>
+      <title>很实用的一些配置集合</title>
+      <link>https://justzyx.github.io/blog/2018-01-21-configuration-sets/</link>
+      <pubDate>Sun, 21 Jan 2018 17:03:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-01-21-configuration-sets/</guid>
+      <description>换设备经常会用到的一些东西、有些比较容易忘，在此记录一下
+Vim #  显示行号 #   永久  echo &amp;#39;set number&amp;#39; &amp;gt;&amp;gt; ~/.vimrc 临时  : set number批量注释&amp;amp;&amp;amp;取消注释 #  :起始行号,结束行号s/^/注释符/g :起始行号,结束行号s/^注释符//g 批量替换 #  :%s/源字符串/目的字符串/g tab设置为4个空格 #  set ts=4 set expandtab Shell命令 #  scp #   上传  scp 本地文件完整路径 username@ip:远程目录路径 下载  scp username@ip:远程文件完整路径 本地目录 VSCode #  更换默认shell #  https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration 列编辑 #  alt + shift + 鼠标滚动
+OS #  Mac环境变量更改 #  cd /etc/paths.</description>
+    </item>
+    
+    <item>
+      <title>Opcache踩过的一些小坑</title>
+      <link>https://justzyx.github.io/blog/2017-09-18-opcache-revalidate-path/</link>
+      <pubDate>Mon, 18 Sep 2017 16:24:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2017-09-18-opcache-revalidate-path/</guid>
+      <description>背景 #  贷上钱在6月份的时候由于运营的批量召回使得应用服务器CPU飙升至满载，导致贷上钱APP有几个小时不能正常提供服务，当时的应急方案是通过额外加了两台应用服务器临时缓解了压力。虽然横向扩展能够解决，但显然不是最佳方案。最终通过blackfire性能分析工作定位出CPU消耗所在，然后做了两处小改动，其中一点就是开启了PHP7 Zend引擎自带的Opcache扩展。启用扩展之后效果很明显，可以从腾讯云后台很明显的看到CPU占用降低了大约百分之40左右。虽然我很早之前就用过Opcache扩展，但是还是遇到了一个困惑很久的问题。冯少建议发出来和大家一起交流一下，公司有很多大佬，如果有说的不对的地方希望及时指正。
+要点 #   发布完代码之后，部分请求走不到最新的release目录。 Opcache建议的配置（主要针对缓存更新时机）  描述 #  我们都知道PHP是弱类型语言，底层采用Zend引擎+扩展的模式降低内部耦合，Zend引擎是C语言实现的，也称为PHP的内核，它将PHP的代码通过一系列操作（词法分析，语法分析等编译过程）翻译成opcode。这一步操作是最耗CPU的过程。opcache扩展就是为了解决这个问题，对同一段代码完全没必要每次都重新解析成opcode，尤其在QPS较高的时候，可以大量降低不必要的CPU消耗。有一本关于PHP内核方面的电子书感觉还不错，有兴趣的可以看一下：http://www.php-internals.com/book/。
+从PHP 5.5起，Opcache扩展自带的，但是默认关闭。谨慎起见，在其中的一台应用服务器开启了Opcache扩展。在观察了几天之后有同事反映说在sentry发现有请求走到了老的release目录。第一时间当然怀疑是opcache的问题，可难处在于由于是生产环境，无法进行多次测试，所以第一次粗暴的进行了fpm进程重启之后就好了。但是第二次版本发布的时候又出现了类似的情况，无奈之下，只好先把扩展拿掉了。上线之前在测试环境中做过相关的opcode缓存更新的测试，加上是由于走错路经，而不是走到正确的代码，代码没生效，所以可以排除并不是opcode的缓存问题。一开始的关注点是server，理由是寻址是server寻的，但是没装opcache扩展的机器为什么server没有寻址错误呢？那么只有一种解释，fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;被缓存了，查看opcache的官方文档果然有一个选项， opcache.revalidate_path。
+这是因为PHP中有两种cache，一种是opcode cache，一种是realpath cache（http://jpauli.github.io/2014/06/30/realpath-cache.html）。Zend引擎下opcode cache 是通过 realpath cache 获取文件信息，即便软链接已经指向了新位置，但是如果 realpath cache 里还保存着旧数据的话，opcode cache 依然无法知道新代码的存在，缺省情况下opcache.revalidate_path是关闭的，此时会缓存符号链接的值，这会导致即便软链接指向修改了，也无法生效。还有一种可行方案是从server层面来解决，每个请求都会经过server，nginx可以通过配置$realpath_root来强制每次都走真实的路径(http://nginx.org/en/docs/http/ngx_http_core_module.html#var_realpath_root)，但是这会带来一个副作用，会造成额外的IO开销，性能会有略微下降。
+建议 #    opcache建议配置
+opcache.enable=1
+opcache.enable_cli=1
+opcache.revalidate_path=1	//路径检测
+opcache.memory_consumption=128
+opcache.max_accelerated_files=2000
+opcache.interned_strings_buffer=8
+  在发布系统post_release中执行opcache_reset();以替代opcache的文件变动检测opcache.revalidate_freq=1,opcache.validate_timestamps=1,主要是因为文件变动检测会造成额外的系统开销，而这种开销完全是没有必要的，在没有发布新代码之前理论上代码是不可能发生变动的。所以只需要发布完代码之后进行一次重制opcode缓存的操作即可。
+  Yii2框架配置文件里不要为了用一个常量去use某个Model，全局常量应尽可能的通过require或use一个常量文件。blackfire跟踪下来发现，use Model会造成百分之一的额外CPU开销。
+  总结 #   Nginx官方文档和PECL帮了大忙 时刻保持谨慎  </description>
+    </item>
+    
+    <item>
+      <title>高价值文档&amp;书籍&amp;手册</title>
+      <link>https://justzyx.github.io/blog/2016-09-26-tech-websites/</link>
+      <pubDate>Mon, 26 Sep 2016 17:03:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2016-09-26-tech-websites/</guid>
+      <description>版本控制 #   Pro Git 第二版（权威指南，大而全） Git教程-廖雪峰（适合快速入门）  Nginx #   Nginx官方文档  MySQL #   MySQL官方参考手册  PHP #   PHP官方手册 PHP官方扩展库 深入理解PHP内核  其他 #   GitBook简明教程 深入理解Yii2.0  </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://justzyx.github.io/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>https://justzyx.github.io/about/</guid>
+      <description>无意中听说费曼学习法（又名费曼技巧）, 深以为然. 仅以此博客开始沉淀自己所思所见所想所得.
+我是谁 #  1995年出生, 祖籍江苏淮安, 目前在上海.
+Web2领域全栈开发, 偏后端.
+做过啥 #   腾讯游戏营销系统 趣头条广告投放系统 快牛金科贷款交易系统 Github: 提过一些PR、改过一些Bug、提交过一些个人作品  友情链接 #   冯敏 &amp;raquo; 前东家上司(总监)，自律，行动力强，见过为数不多的技术及管理实力都比较好的大神 屈屈 &amp;raquo; 360前端大佬,geeker 阮一峰老师 &amp;raquo; 知识面非常之广，能把知识总结的很易于理解的一个人，非常适合head first Draveness &amp;raquo; 非常佩服和值得学习的一个人, 超强的后浪  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://justzyx.github.io/docs/interview/cpp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/interview/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://justzyx.github.io/docs/interview/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/interview/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://justzyx.github.io/docs/xmind/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/go/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

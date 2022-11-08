@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Go" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://justzyx.github.io/tags/go/" />
+
+<title>Go | 八股文</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.48b2887f47a4eb80fef1013453214ed45cff2e66be5e568689dbd0f3c1d20569.js" integrity="sha256-SLKIf0ek64D&#43;8QE0UyFO1Fz/Lma&#43;XlaGidvQ88HSBWk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://justzyx.github.io/tags/go/index.xml" title="八股文" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/docs/"><span>八股文</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/" class="">思维导图</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/redis/" class="">Redis</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/" class="">面试题</a>
+  
+
+          
+  <ul>
+    
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://blog.justzyx.cn/" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Go</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/blog/2022-10-02-go-panic/">Panic Cases</a>
+    </h2>
+    
+  <h5>October 2, 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/go/">Go</a>
+  </div>
+  
+
+
+
+
+    <p>本文尽可能的枚举较为常见的 Panic 案例。
+并发 #  func main() { c := make(chan int, 10) c &lt;- 1 close(c) c &lt;- 2 for i := range c { fmt.Print(i) } } panic: send on closed channel goroutine 1 [running]: main.main() /Users/shoueishin/Github/snippets/go/test.go:9 +0x56 exit status 2 以上代码我们得出以下几点:
+ 只有发送者才能关闭信道，而接收者不能。向一个已经关闭的信道发送数据会引发 panic close有缓冲区的channel以后, 不可写但还可以读  
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/blog/2019-10-10-go-array-and-slice/">深入理解Slice</a>
+    </h2>
+    
+  <h5>October 9, 2019</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/go/">Go</a>
+  </div>
+  
+
+
+
+
+    <p>Go和C数组的区别 #   在Go中，数组名代表一组值，而C数组名是数组首地址 在Go中，数组当做参数是值拷贝，会把数组中所有的元素都拷贝过去 在GO中，数组长度也是类型的一部分，如[10]int和[20]int是不同的数据类型  Slice原理 #  struct #  slice的结构大致如下：
+type slice struct { ptr *Elem //指向底层数组的指针  len int //可容纳最大长度  cap int //申请底层数组的长度 } 以语句 s := make([]int, 5, 10) 为例，包含如下信息：
+ s指向了一个类型为[10]int的数组 s当前容量为5，初始值为5个0，可扩容至10 如make不指明cap，则cap和len一致  slicing #  对一个slice进行切片，不会进行值拷贝，只是在底层数组上指针的移动。所以如果对切片后的slice进行修改操作，原slice也会相应的变化。
+d := []byte{&#39;r&#39;, &#39;o&#39;, &#39;a&#39;, &#39;d&#39;} e := d[2:] // e == []byte{&#39;a&#39;, &#39;d&#39;} e[1] = &#39;m&#39; // e == []byte{&#39;a&#39;, &#39;m&#39;} // d == []byte{&#39;r&#39;, &#39;o&#39;, &#39;a&#39;, &#39;m&#39;} 扩容len #  s := make([]int, 5, 200) //len(s) == 5 s = s[:cap(s)] //len(s) == 200  slice不能扩容超过cap，既不能超过底层数组的长度 下标访问，index不能超过len，否则会runtime panic  扩容cap #  如果cap不够，此时会发生内存拷贝和迁移，内置append函数中就包含了动态扩容，以slice s为例，大致过程如下：
+        <a href="/blog/2019-10-10-go-array-and-slice/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

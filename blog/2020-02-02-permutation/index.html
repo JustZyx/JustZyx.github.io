@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>全排列 - 庄全🥚</title>
+<meta property="og:title" content="全排列 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">2 min read</span>
+    
+
+    
+    <h1 class="article-title">全排列</h1>
+    
+
+    
+    <span class="article-date">February 2, 2020</span>
+    
+
+    <div class="article-content">
+      <p>回溯算法经常会结合DFS一起出现，leetcode上一道<a href="https://leetcode-cn.com/problems/permutations/">46.全排列</a>就是回溯+DFS+剪枝思想的典型应用。</p>
+<h2 id="dfs">
+  DFS
+  <a class="anchor" href="#dfs">#</a>
+</h2>
+<p>这道题最常规的一种解法是DFS，然后通过choose or not choose来剪枝回溯。说的比较糙，如果领会不了建议拿一个case用GDB跟一下下面的代码，自己跟一遍胜过千言万语。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;vector&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;unordered_map&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> ret, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> permutation, unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> choosed)
+{
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>nums.size(); i<span style="color:#f92672">++</span>) {
+        <span style="color:#66d9ef">if</span> (permutation.size()<span style="color:#f92672">==</span>nums.size()) {
+            ret.push_back(permutation);
+            <span style="color:#66d9ef">return</span>;
+        }
+        <span style="color:#66d9ef">if</span> (choosed[nums[i]]) { <span style="color:#75715e">//已经选过了
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">continue</span>;
+        }
+        permutation.push_back(nums[i]);
+        choosed[nums[i]] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+        dfs(nums, ret, permutation, choosed);
+
+        <span style="color:#75715e">//回溯
+</span><span style="color:#75715e"></span>        permutation.pop_back();
+        choosed[nums[i]] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    }
+}
+
+vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> permute(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums)
+{
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> ret;
+    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> permutation;
+    unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> choosed;
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>nums.size(); i<span style="color:#f92672">++</span>) {
+        choosed[nums[i]] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+    }
+    dfs(nums, ret, permutation, choosed);
+    <span style="color:#66d9ef">return</span> ret;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> ret <span style="color:#f92672">=</span> permute(nums);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>ret.size(); i<span style="color:#f92672">++</span>) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j<span style="color:#f92672">&lt;</span>ret[<span style="color:#ae81ff">0</span>].size(); j<span style="color:#f92672">++</span>) {
+            cout <span style="color:#f92672">&lt;&lt;</span> ret[i][j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+        }
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="回溯">
+  回溯
+  <a class="anchor" href="#%e5%9b%9e%e6%ba%af">#</a>
+</h2>
+<p>还有一种是纯回溯的做法，分别把每个元素交换到第一个位置，然后递归的对后续元素做同样操作，代码如下</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">backtrack</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> ret, <span style="color:#66d9ef">int</span> begin)
+{
+    <span style="color:#66d9ef">if</span> (begin<span style="color:#f92672">&gt;=</span>nums.size()) { <span style="color:#75715e">//递归终止条件
+</span><span style="color:#75715e"></span>        ret.push_back(nums);
+        <span style="color:#66d9ef">return</span>;
+    }
+
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> begin; i<span style="color:#f92672">&lt;</span>nums.size(); i<span style="color:#f92672">++</span>) {
+        swap(nums[i], nums[begin]);
+        backtrack(nums, ret, begin<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>); <span style="color:#75715e">//递归对后续元素做同样的操作
+</span><span style="color:#75715e"></span>
+        <span style="color:#75715e">//回溯回来
+</span><span style="color:#75715e"></span>        swap(nums[i], nums[begin]);
+    }
+}
+
+vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> permute(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums)
+{
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> ret;
+    backtrack(nums, ret, <span style="color:#ae81ff">0</span>);
+    <span style="color:#66d9ef">return</span> ret;
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>};
+    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> ret <span style="color:#f92672">=</span> permute(nums);
+    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>ret.size(); i<span style="color:#f92672">++</span>) {
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j<span style="color:#f92672">&lt;</span>ret[<span style="color:#ae81ff">0</span>].size(); j<span style="color:#f92672">++</span>) {
+            cout <span style="color:#f92672">&lt;&lt;</span> ret[i][j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+        }
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+    }
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div>
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

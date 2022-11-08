@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作系统 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <description>Recent content in 操作系统 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 01 Oct 2019 23:48:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>存储管理</title>
+      <link>https://justzyx.github.io/blog/2019-10-01-memory-management/</link>
+      <pubDate>Tue, 01 Oct 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-10-01-memory-management/</guid>
+      <description>连续内存分配 #  计算机体系结构和内存层次 #  计算机系统包括CPU、内存、IO设备和总线，如下图：  地址总线一般是32位(4个字节)，换言之CPU一次读写是4个字节起步 内存是以字节为单位进行访问的，每一个字节有自己的物理地址 外存有扇区编号，一个扇区是512字节 MMU的作用是把逻辑地址空间转换为物理地址空间  由于速度、容量和价格三者的矛盾，所以出现了分层存储体系: 高速缓存、内存、外存。CPU的寻址过程大致就是先访问L1、L2高速cache，如未命中则通过地址总线去访问内存，如果内存发生缺页异常再去访问外存。
+地址空间&amp;amp;地址生成 #  地址空间是一个进程可以寻址内存的一套地址集合，每个进程都有一个自己的地址空间。</description>
+    </item>
+    
+    <item>
+      <title>静态程序构建过程</title>
+      <link>https://justzyx.github.io/blog/2018-07-24-static-program-life-cycle/</link>
+      <pubDate>Tue, 24 Jul 2018 17:34:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-07-24-static-program-life-cycle/</guid>
+      <description>静态程序生命周期 #  以K&amp;amp;R &amp;laquo;C程序设计语言&amp;raquo; 中 hello.c 为例
+#inclue &amp;lt;stdio.h&amp;gt; int main() { printf(&amp;quot;Hello World\n&amp;quot;); return 0; } gcc hello.c -o hello ./hello 如上实现了 hello.c C语言源文件到机器可执行的二进制目标文件 hello的过程。这个过程大致经历了如下步骤：
+ 源文件 (.c/.cpp/.h) 预处理 (.c/.cpp/.h =&amp;gt; ./i)  gcc -E hello.c -o hello.i 编译器 (./i =&amp;gt; ./s)：把预处理完的文件进行一系列的词法分析、语法分析、语义分析及优化后生成相应的汇编代码  gcc -S hello.i -o hello.s 汇编器 (./s =&amp;gt; .out/.o)：汇编器将汇编语言翻译成机器语言指令，并打包成可重定位目标程序 hello.o  gcc -c hello.s -o hello.o 链接器 (.o =&amp;gt; .exe/.out)：链接可重定位的二进制文件，形成完整的逻辑地址，生成可执行目标文件 装载：装载进内存，MMU把逻辑地址映射成物理地址  多文件构建系统 #    make (Makefile) 项目变大之后，源文件一个一个去手动去编译显然不现实，make就是为了解决这个问题，它是一个自动化编译的工具，可以实现一条命令编译所有源文件。 但是前提它需要知道源文件之间的依赖关系，记录这些依赖关系规则的文件就是Makefile文件。</description>
+    </item>
+    
+  </channel>
+</rss>

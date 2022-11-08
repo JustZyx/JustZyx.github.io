@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>AngularJs Git 提交规范 - 庄全🥚</title>
+<meta property="og:title" content="AngularJs Git 提交规范 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    
+    <h1 class="article-title">AngularJs Git 提交规范</h1>
+    
+
+    
+    <span class="article-date">March 19, 2020</span>
+    
+
+    <div class="article-content">
+      <p>在给Github上开源项目做出Contribution的时候我们要遵循其所规定提交规范。如Redis、AngularJs等项目均有自己的Contribution约束。也有一些学习资料类的高星项目缺乏提交约束，此时我一般会遵循AngularJs的提交规范来PR，个人觉得这份规范具有很强的借鉴性，比较适合作为团队合作的规范，鉴于尚无中文版本，所以我打算翻译一下以供大家参考：</p>
+<h2 id="格式">
+  格式
+  <a class="anchor" href="#%e6%a0%bc%e5%bc%8f">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#f92672">&lt;</span>type<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&lt;</span>scope<span style="color:#f92672">&gt;</span>)<span style="color:#f92672">:</span> <span style="color:#f92672">&lt;</span>subject<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//消息头
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span>BLANK LINE<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//空行
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span>body<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//正文
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span>BLANK LINE<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//空行
+</span><span style="color:#75715e"></span><span style="color:#f92672">&lt;</span>footer<span style="color:#f92672">&gt;</span> <span style="color:#75715e">//消息尾
+</span></code></pre></div><ol>
+<li>为了兼容多种工具方便阅读git message，禁止每一行超过100个字符！</li>
+<li>一条commit message包含了header、body和footer，它们之间用空行分隔。</li>
+</ol>
+<h3 id="回滚">
+  回滚
+  <a class="anchor" href="#%e5%9b%9e%e6%bb%9a">#</a>
+</h3>
+<p>如果当前提交回滚了上一次的提交，它的头部应该以<code>revert: </code>开头，紧接着是被回滚的提交记录的头部。body应该描述成<code>This reverts commit &lt;hash&gt;.</code>，hash是被回滚的提交记录的SHA值。</p>
+<h3 id="消息头">
+  消息头
+  <a class="anchor" href="#%e6%b6%88%e6%81%af%e5%a4%b4">#</a>
+</h3>
+<p>消息头是单独的一行，对改动作出了简洁的描述，包含了type，scope(可选)以及标题</p>
+<h4 id="type类型">
+  type(类型)
+  <a class="anchor" href="#type%e7%b1%bb%e5%9e%8b">#</a>
+</h4>
+<ul>
+<li>添加功能特性：feat (feature)</li>
+<li>修复BUG：fix (bug fix)</li>
+<li>添加文档：docs (documentation)</li>
+<li>代码风格：style (formatting, missing semi colons, …)</li>
+<li>重构：refactor</li>
+<li>添加测试用例：test (when adding missing tests)</li>
+<li>chore (maintain)</li>
+</ul>
+<h4 id="scope改动涉及区域">
+  scope(改动涉及区域)
+  <a class="anchor" href="#scope%e6%94%b9%e5%8a%a8%e6%b6%89%e5%8f%8a%e5%8c%ba%e5%9f%9f">#</a>
+</h4>
+<p>scope要能够表明改动的区域。举个例子, $location, $browser, $compile, $rootScope, ngHref, ngClick, ngView, etc&hellip;这种按照模块来划分，如果是后端的话，通常会分层架构，可以按照接口粒度(user/login), 也可以按照service(UserService)、model(UserModel)的粒度</p>
+<p>如果没有合适的区域可以用通配符*代替</p>
+<h4 id="text标题">
+  text(标题)
+  <a class="anchor" href="#text%e6%a0%87%e9%a2%98">#</a>
+</h4>
+<p>对改动的简短描述</p>
+<ul>
+<li>使用命令式、现在式： “change” 而不是 “changed” 或者 “changes”</li>
+<li>第一个字母不要大写</li>
+<li>不要以句号.或者。结尾</li>
+</ul>
+<h3 id="消息体">
+  消息体
+  <a class="anchor" href="#%e6%b6%88%e6%81%af%e4%bd%93">#</a>
+</h3>
+<ul>
+<li>使用命令式、现在式：如 “change” 而不是 “changed” 或者 “changes”</li>
+<li>包含改动的动机，并与以前的行为形成对比</li>
+</ul>
+<h3 id="消息尾">
+  消息尾
+  <a class="anchor" href="#%e6%b6%88%e6%81%af%e5%b0%be">#</a>
+</h3>
+<h4 id="重大变化">
+  重大变化
+  <a class="anchor" href="#%e9%87%8d%e5%a4%a7%e5%8f%98%e5%8c%96">#</a>
+</h4>
+<p>所有的重大更改应以单词<code>BREAKING CHANGE：</code>跟上空格或两个换行符开头，在消息尾的开头以区块的方式声明。剩下的提交信息是对改动的描述，理由和迁移说明。示例如下：</p>
+<pre tabindex="0"><code>BREAKING CHANGE: isolate scope bindings definition has changed and
+    the inject option for the directive controller injection was removed.
+    
+    To migrate the code follow the example below:
+    
+    Before:
+    
+    scope: {
+      myAttr: 'attribute',
+      myBind: 'bind',
+      myExpression: 'expression',
+      myEval: 'evaluate',
+      myAccessor: 'accessor'
+    }
+    
+    After:
+    
+    scope: {
+      myAttr: '@',
+      myBind: '@',
+      myExpression: '&amp;',
+      // myEval - usually not useful, but in cases where the expression is assignable, you can use '='
+      myAccessor: '=' // in directive's template change myAccessor() to myAccessor
+    }
+    
+    The removed `inject` wasn't generaly useful for directives so there should be no code using it.
+</code></pre><h4 id="参考的issuestapd-bugs">
+  参考的issues(tapd bugs)
+  <a class="anchor" href="#%e5%8f%82%e8%80%83%e7%9a%84issuestapd-bugs">#</a>
+</h4>
+<p>已关闭的错误应在页脚的单独一行中列出，并以“ Closes”关键字作为前缀，如下所示：</p>
+<pre tabindex="0"><code>Closes #234
+</code></pre><p>或者关闭多个问题：</p>
+<pre tabindex="0"><code>Closes #123, #245, #992
+</code></pre><h2 id="示例">
+  示例
+  <a class="anchor" href="#%e7%a4%ba%e4%be%8b">#</a>
+</h2>
+<hr>
+<p>feat($browser): onUrlChange event (popstate/hashchange/polling)</p>
+<p>Added new event to $browser:</p>
+<ul>
+<li>forward popstate event if available</li>
+<li>forward hashchange event if popstate not available</li>
+<li>do polling when neither popstate nor hashchange available</li>
+</ul>
+<p>Breaks $browser.onHashChange, which was removed (use onUrlChange instead)</p>
+<hr>
+<p>fix($compile): couple of unit tests for IE9</p>
+<p>Older IEs serialize html uppercased, but IE9 does not&hellip;
+Would be better to expect case insensitive, unfortunately jasmine does
+not allow to user regexps for throw expectations.</p>
+<p>Closes #392
+Breaks foo.bar api, foo.baz should be used instead</p>
+<hr>
+<p>feat(directive): ng:disabled, ng:checked, ng:multiple, ng:readonly, ng:selected</p>
+<p>New directives for proper binding these attributes in older browsers (IE).
+Added coresponding description, live examples and e2e tests.</p>
+<p>Closes #351</p>
+<hr>
+<p>style($location): add couple of missing semi colons</p>
+<p>docs(guide): updated fixed docs from Google Docs</p>
+<p>Couple of typos fixed:</p>
+<ul>
+<li>indentation</li>
+<li>batchLogbatchLog -&gt; batchLog</li>
+<li>start periodic checking</li>
+<li>missing brace</li>
+</ul>
+<hr>
+<p>feat($compile): simplify isolate scope bindings</p>
+<p>Changed the isolate scope binding options to:</p>
+<ul>
+<li>@attr - attribute binding (including interpolation)</li>
+<li>=model - by-directional model binding</li>
+<li>&amp;expr - expression execution binding</li>
+</ul>
+<p>This change simplifies the terminology as well as
+number of choices available to the developer. It
+also supports local name aliasing from the parent.</p>
+<p>BREAKING CHANGE: isolate scope bindings definition has changed and
+the inject option for the directive controller injection was removed.</p>
+<p>To migrate the code follow the example below:</p>
+<p>Before:</p>
+<p>scope: {
+myAttr: &lsquo;attribute&rsquo;,
+myBind: &lsquo;bind&rsquo;,
+myExpression: &lsquo;expression&rsquo;,
+myEval: &lsquo;evaluate&rsquo;,
+myAccessor: &lsquo;accessor&rsquo;
+}</p>
+<p>After:</p>
+<p>scope: {
+myAttr: &lsquo;@&rsquo;,
+myBind: &lsquo;@&rsquo;,
+myExpression: &lsquo;&amp;&rsquo;,
+// myEval - usually not useful, but in cases where the expression is assignable, you can use &lsquo;=&rsquo;
+myAccessor: &lsquo;=&rsquo; // in directive&rsquo;s template change myAccessor() to myAccessor
+}</p>
+<p>The removed <code>inject</code> wasn&rsquo;t generaly useful for directives so there should be no code using it.</p>
+<hr>
+<h2 id="参考">
+  参考
+  <a class="anchor" href="#%e5%8f%82%e8%80%83">#</a>
+</h2>
+<ul>
+<li><a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#">Git Commit Message Conventions
+</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>

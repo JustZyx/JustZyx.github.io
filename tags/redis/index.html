@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Redis" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://justzyx.github.io/tags/redis/" />
+
+<title>Redis | 八股文</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.c58292d36b18b675680ab9baea2029204537b839ea72f258746ec0f32ce8d6c8.css" integrity="sha256-xYKS02sYtnVoCrm66iApIEU3uDnqcvJYdG7A8yzo1sg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.48b2887f47a4eb80fef1013453214ed45cff2e66be5e568689dbd0f3c1d20569.js" integrity="sha256-SLKIf0ek64D&#43;8QE0UyFO1Fz/Lma&#43;XlaGidvQ88HSBWk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://justzyx.github.io/tags/redis/index.xml" title="八股文" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/docs/"><span>八股文</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="" aria-label="" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/" class="">思维导图</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/python/" class="">Python</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/xmind/redis/" class="">Redis</a>
+  
+
+        </li>
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interview/" class="">面试题</a>
+  
+
+          
+  <ul>
+    
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://blog.justzyx.cn/" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Redis</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/blog/2019-12-04-redis-memory-management/">Redis内存管理</a>
+    </h2>
+    
+  <h5>December 2, 2019</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/redis/">Redis</a>
+  </div>
+  
+
+
+
+
+    <p>本文源于LeetCode上遇到的一道题LRU Cache, 第一次听说LRU这个词还是在大三操作系统课上, 操作系统在发生缺页异常之后会进行页面置换, LRU正是几个页面置换算法之一。正巧, Redis的内存管理也用到了LRU算法, 故借此机会拓展开来阅读一下Redis内存管理的源码以及详细介绍一下LRU算法的实现。
+本文参考的源码是Redis 3.0
+配置项说明 #  redis.conf中有两个和内存管理相关的配置项: maxmemory 和 maxmemory-policy。这两个配置的主要意义在于控制内存的精细化使用，尤其适用于冷热数据较为明显的业务场景。如读写比超过10:1的高并发缓存系统等
+maxmemory #  maxmemory 定义了可供使用的最大内存字节数上限, 当达到设定的阈值后, Redis会根据设定的maxmemory-policy内存驱逐策略对keys进行清理.
+有两个比较值得关注的点:
+ 缺省值是0 针对32位机器内存不会超过4GB这一特性,无论设置的是什么,Redis都把最大可用内存字节数控制在了3GB且默认选取了REDIS_MAXMEMORY_NO_EVICTION这一内存驱逐策略  以上讨论所涉及相关代码片段如下:
+//redis.h struct redisServer { ... unsigned long long maxmemory; /* Max number of memory bytes to use */ int maxmemory_policy; /* Policy for key eviction */ } #define REDIS_DEFAULT_MAXMEMORY 0  //内存驱逐策略 #define REDIS_MAXMEMORY_VOLATILE_LRU 0 #define REDIS_MAXMEMORY_VOLATILE_TTL 1 #define REDIS_MAXMEMORY_VOLATILE_RANDOM 2 #define REDIS_MAXMEMORY_ALLKEYS_LRU 3 #define REDIS_MAXMEMORY_ALLKEYS_RANDOM 4 #define REDIS_MAXMEMORY_NO_EVICTION 5 #define REDIS_DEFAULT_MAXMEMORY_POLICY REDIS_MAXMEMORY_NO_EVICTION  //redis.
+        <a href="/blog/2019-12-04-redis-memory-management/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){if(window.getSelection().toString())return;a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/go/">Go</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/">方法论</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%95%99%E8%AE%AD/">经验教训</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%BF%BB%E8%AF%91/">翻译</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/redis/">Redis</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mysql/">MySQL</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/%E6%96%87%E6%A1%A3/">文档</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/php/">PHP</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

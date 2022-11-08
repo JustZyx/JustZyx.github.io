@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 02 Feb 2020 23:48:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>全排列</title>
+      <link>https://justzyx.github.io/blog/2020-02-02-permutation/</link>
+      <pubDate>Sun, 02 Feb 2020 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2020-02-02-permutation/</guid>
+      <description>回溯算法经常会结合DFS一起出现，leetcode上一道46.全排列就是回溯+DFS+剪枝思想的典型应用。
+DFS #  这道题最常规的一种解法是DFS，然后通过choose or not choose来剪枝回溯。说的比较糙，如果领会不了建议拿一个case用GDB跟一下下面的代码，自己跟一遍胜过千言万语。
+#include &amp;lt;vector&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;unordered_map&amp;gt; using namespace std; void dfs(vector&amp;lt;int&amp;gt;&amp;amp; nums, vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt;&amp;amp; ret, vector&amp;lt;int&amp;gt;&amp;amp; permutation, unordered_map&amp;lt;int, int&amp;gt;&amp;amp; choosed) { for (int i = 0; i&amp;lt;nums.size(); i++) { if (permutation.size()==nums.size()) { ret.push_back(permutation); return; } if (choosed[nums[i]]) { //已经选过了  continue; } permutation.push_back(nums[i]); choosed[nums[i]] = 1; dfs(nums, ret, permutation, choosed); //回溯  permutation.pop_back(); choosed[nums[i]] = 0; } } vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; permute(vector&amp;lt;int&amp;gt;&amp;amp; nums) { vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; ret; vector&amp;lt;int&amp;gt; permutation; unordered_map&amp;lt;int, int&amp;gt; choosed; for (int i = 0; i&amp;lt;nums.</description>
+    </item>
+    
+    <item>
+      <title>合并有序数据结构</title>
+      <link>https://justzyx.github.io/blog/2019-08-28-merge-sorted-ds/</link>
+      <pubDate>Wed, 28 Aug 2019 20:49:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-08-28-merge-sorted-ds/</guid>
+      <description>有序数据结构的合并是个基础操作，在很多算法中有着应用，比如归并排序先分治再归并，其中的归并操作就是合并有序数组的过程，掌握基本功对于后续复杂算法的理解有着非常重要的帮助
+题目描述 #  easy #   88. Merge Sorted Array 21. Merge Two Sorted Lists 617. Merge Two Binary Trees  hard #   23. Merge k Sorted Lists  思路分析 #  合并有序数组 #  func merge(nums1 []int, m int, nums2 []int, n int) { i, j, k := m-1, n-1, m+n-1 for j &amp;gt;= 0 { if i &amp;gt;= 0 &amp;amp;&amp;amp; nums1[i] &amp;gt; nums2[j] { nums1[k] = nums1[i] i = i-1 } else { nums1[k] = nums2[j] j = j-1 } k = k-1 } } 倒序遍历，相继比较nums1和nums2，取大的放到顺序位置</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on 八股文</title>
+    <link>https://justzyx.github.io/tags/go/</link>
+    <description>Recent content in Go on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 02 Oct 2022 10:04:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Panic Cases</title>
+      <link>https://justzyx.github.io/blog/2022-10-02-go-panic/</link>
+      <pubDate>Sun, 02 Oct 2022 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-10-02-go-panic/</guid>
+      <description>本文尽可能的枚举较为常见的 Panic 案例。
+并发 #  func main() { c := make(chan int, 10) c &amp;lt;- 1 close(c) c &amp;lt;- 2 for i := range c { fmt.Print(i) } } panic: send on closed channel goroutine 1 [running]: main.main() /Users/shoueishin/Github/snippets/go/test.go:9 +0x56 exit status 2 以上代码我们得出以下几点:
+ 只有发送者才能关闭信道，而接收者不能。向一个已经关闭的信道发送数据会引发 panic close有缓冲区的channel以后, 不可写但还可以读  </description>
+    </item>
+    
+    <item>
+      <title>深入理解Slice</title>
+      <link>https://justzyx.github.io/blog/2019-10-10-go-array-and-slice/</link>
+      <pubDate>Wed, 09 Oct 2019 17:35:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-10-10-go-array-and-slice/</guid>
+      <description>Go和C数组的区别 #   在Go中，数组名代表一组值，而C数组名是数组首地址 在Go中，数组当做参数是值拷贝，会把数组中所有的元素都拷贝过去 在GO中，数组长度也是类型的一部分，如[10]int和[20]int是不同的数据类型  Slice原理 #  struct #  slice的结构大致如下：
+type slice struct { ptr *Elem //指向底层数组的指针  len int //可容纳最大长度  cap int //申请底层数组的长度 } 以语句 s := make([]int, 5, 10) 为例，包含如下信息：
+ s指向了一个类型为[10]int的数组 s当前容量为5，初始值为5个0，可扩容至10 如make不指明cap，则cap和len一致  slicing #  对一个slice进行切片，不会进行值拷贝，只是在底层数组上指针的移动。所以如果对切片后的slice进行修改操作，原slice也会相应的变化。
+d := []byte{&amp;#39;r&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;d&amp;#39;} e := d[2:] // e == []byte{&amp;#39;a&amp;#39;, &amp;#39;d&amp;#39;} e[1] = &amp;#39;m&amp;#39; // e == []byte{&amp;#39;a&amp;#39;, &amp;#39;m&amp;#39;} // d == []byte{&amp;#39;r&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;a&amp;#39;, &amp;#39;m&amp;#39;} 扩容len #  s := make([]int, 5, 200) //len(s) == 5 s = s[:cap(s)] //len(s) == 200  slice不能扩容超过cap，既不能超过底层数组的长度 下标访问，index不能超过len，否则会runtime panic  扩容cap #  如果cap不够，此时会发生内存拷贝和迁移，内置append函数中就包含了动态扩容，以slice s为例，大致过程如下：</description>
+    </item>
+    
+  </channel>
+</rss>

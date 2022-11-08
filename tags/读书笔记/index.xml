@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>读书笔记 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+    <description>Recent content in 读书笔记 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 19 Nov 2019 23:48:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一些基础知识的回顾</title>
+      <link>https://justzyx.github.io/blog/2019-11-19-review-cs-basic-knowledge/</link>
+      <pubDate>Tue, 19 Nov 2019 23:48:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2019-11-19-review-cs-basic-knowledge/</guid>
+      <description>进程 #  进程管理单元(process control block) #  进程的一部分，进程存在的标志，记录管理进程的基本情况和运行情况：
+ 进程描述信息：pid &amp;amp; uid 进程控制和管理信息：进程当前状态及优先级等 资源分配情况：代码段、数据段以及堆栈信息 寄存器：上下文切换的时候保存寄存器的值  进程的本质 #  进程的本质是一个执行中的程序实体，是对一个正在运行的程序的一种抽象。
+ 一个独立的逻辑控制流，提供一个假象，我们的程序在独占CPU 一个私有的地址空间，提供一个假象，我们的程序在独占存储器系统  如何创建一个进程 #  pid_t Fork(void) { pid_t pid; if ((pid = fork()) &amp;lt; 0) { fprintf(stderr fork error, &amp;#34;: %s\n&amp;#34;, strerror(errno)); exit(0); } return pid; } fork函数被父进程调用一次却返回两次 #  一次是返回给子进程0，一次是返回给父进程子进程的pid，可以区分程序逻辑是在子进程还是父进程执行的
+进程树 #  描述进程之间的父子关系，类似于图论中的有向树
+brew install pstree 进程通信方式 #   共享内存 消息传递 管道  </description>
+    </item>
+    
+  </channel>
+</rss>

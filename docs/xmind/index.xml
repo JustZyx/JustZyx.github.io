@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>思维导图 on 八股文</title>
+    <link>https://justzyx.github.io/docs/xmind/</link>
+    <description>Recent content in 思维导图 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://justzyx.github.io/docs/xmind/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Python</title>
+      <link>https://justzyx.github.io/docs/xmind/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>https://justzyx.github.io/docs/xmind/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://justzyx.github.io/docs/xmind/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://justzyx.github.io/docs/xmind/go/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>面试 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E9%9D%A2%E8%AF%95/</link>
+    <description>Recent content in 面试 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 23 Sep 2022 10:04:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E9%9D%A2%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记一次在线测评</title>
+      <link>https://justzyx.github.io/blog/2022-09-23-bullet-labs-interview/</link>
+      <pubDate>Fri, 23 Sep 2022 10:04:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2022-09-23-bullet-labs-interview/</guid>
+      <description>下午本来约了头条二面, 结果面试官请假在医院, HR打电话过来改约了. 于是下午空了出来, 就把原定于明天做的在线测评提到了今天.
+这是一家Web3领域的公司, 可以提供Full Remote Backend Developer岗位. 由于饱受独居和通勤之苦, 可以Remote这个点很是吸引我. 不过进入到正式面试流程之前需要先做个在线测评.
+测评在hackerrank上进行, 总共14道题, 13道多项选择题, 一道Coding题. 选择题主要是一些分布式、微服务、Web安全和Linux相关的基础知识. Coding题是一道比较典型的爬虫题, 感觉可能是面试官看到我简历里写过爬虫, 特意准备的, 另外想考察一下编码风格和代码基础
+需求分析 #    输入
+limit
+通过 REST API 请求远端数据
+https://jsonmock.hackerrank.com/api/articles?page=&amp;lt;page_num&amp;gt; eg: 样例数据
+  条件限制
+ title、story_title 都为 null 的丢弃 num_comments 相同的按字典序排序    输出
+输出评论数最高的 limit 篇文章名
+  思路 #  题目很简单, 基本上所有的爬虫脚本, 我们都可以归纳为如下几个步骤:
+ crawler: 爬虫模块, 获取数据 filter: 过滤模块, 过滤不符合条件的脏数据 ranker: 排序模块, 对结果集按给定字段排序 formater: 格式化模块, 格式化输出最终结果  在实现上可以采用串行和并行两种实现方式, 代码分别如下:</description>
+    </item>
+    
+  </channel>
+</rss>

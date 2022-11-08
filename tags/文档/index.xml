@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文档 on 八股文</title>
+    <link>https://justzyx.github.io/tags/%E6%96%87%E6%A1%A3/</link>
+    <description>Recent content in 文档 on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 21 Jan 2018 17:03:00 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/tags/%E6%96%87%E6%A1%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>很实用的一些配置集合</title>
+      <link>https://justzyx.github.io/blog/2018-01-21-configuration-sets/</link>
+      <pubDate>Sun, 21 Jan 2018 17:03:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2018-01-21-configuration-sets/</guid>
+      <description>换设备经常会用到的一些东西、有些比较容易忘，在此记录一下
+Vim #  显示行号 #   永久  echo &amp;#39;set number&amp;#39; &amp;gt;&amp;gt; ~/.vimrc 临时  : set number批量注释&amp;amp;&amp;amp;取消注释 #  :起始行号,结束行号s/^/注释符/g :起始行号,结束行号s/^注释符//g 批量替换 #  :%s/源字符串/目的字符串/g tab设置为4个空格 #  set ts=4 set expandtab Shell命令 #  scp #   上传  scp 本地文件完整路径 username@ip:远程目录路径 下载  scp username@ip:远程文件完整路径 本地目录 VSCode #  更换默认shell #  https://code.visualstudio.com/docs/editor/integrated-terminal#_configuration 列编辑 #  alt + shift + 鼠标滚动
+OS #  Mac环境变量更改 #  cd /etc/paths.</description>
+    </item>
+    
+    <item>
+      <title>高价值文档&amp;书籍&amp;手册</title>
+      <link>https://justzyx.github.io/blog/2016-09-26-tech-websites/</link>
+      <pubDate>Mon, 26 Sep 2016 17:03:00 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/blog/2016-09-26-tech-websites/</guid>
+      <description>版本控制 #   Pro Git 第二版（权威指南，大而全） Git教程-廖雪峰（适合快速入门）  Nginx #   Nginx官方文档  MySQL #   MySQL官方参考手册  PHP #   PHP官方手册 PHP官方扩展库 深入理解PHP内核  其他 #   GitBook简明教程 深入理解Yii2.0  </description>
+    </item>
+    
+  </channel>
+</rss>

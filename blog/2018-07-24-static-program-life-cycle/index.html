@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.91.2" />
+
+
+<title>静态程序构建过程 - 庄全🥚</title>
+<meta property="og:title" content="静态程序构建过程 - 庄全🥚">
+
+
+  <link href='https://justzyx.github.io/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+<link rel="icon" href="https://justzyx.github.io/images/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="https://justzyx.github.io/css/main.css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Merriweather:400|Lato:400,400italic,700">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="https://justzyx.github.io/" class="nav-logo">
+    <img src="https://justzyx.github.io/images/logo.png" 
+         width="50" 
+         height="50" 
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    
+    <li><a href="/docs/" target="_blank">八股文</a></li>
+    
+    
+    
+    
+    
+    
+    
+    <li><a href="/gibberish/">自言自语</a></li>
+    
+    
+    
+    
+    
+    <li><a href="/about/">关于</a></li>
+    
+    
+  </ul>
+</nav>
+      </header>
+
+
+<main class="content" role="main">
+
+  <div class="toc" id="toc-auto">
+      <h2 class="toc-title"></h2>
+      <div class="toc-content always-active" id="toc-content-auto"></div>
+  </div>
+
+  <article class="article">
+    
+    <span class="article-duration">1 min read</span>
+    
+
+    
+    <h1 class="article-title">静态程序构建过程</h1>
+    
+
+    
+    <span class="article-date">July 24, 2018</span>
+    
+
+    <div class="article-content">
+      <h3 id="静态程序生命周期">
+  静态程序生命周期
+  <a class="anchor" href="#%e9%9d%99%e6%80%81%e7%a8%8b%e5%ba%8f%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f">#</a>
+</h3>
+<p>以K&amp;R &laquo;C程序设计语言&raquo; 中 hello.c 为例</p>
+<pre tabindex="0"><code>#inclue &lt;stdio.h&gt;
+
+int main()
+{
+   printf(&quot;Hello World\n&quot;);
+   return 0;
+}
+
+gcc hello.c -o hello
+./hello
+</code></pre><p>如上实现了 hello.c C语言源文件到机器可执行的二进制目标文件 hello的过程。这个过程大致经历了如下步骤：</p>
+<ol>
+<li>源文件 (.c/.cpp/.h)</li>
+<li>预处理 (.c/.cpp/.h =&gt; ./i)</li>
+</ol>
+<pre tabindex="0"><code>gcc -E hello.c -o hello.i
+</code></pre><ol start="3">
+<li>编译器 (./i =&gt; ./s)：把预处理完的文件进行一系列的词法分析、语法分析、语义分析及优化后生成相应的汇编代码</li>
+</ol>
+<pre tabindex="0"><code>gcc -S hello.i -o hello.s
+</code></pre><ol start="4">
+<li>汇编器 (./s =&gt; .out/.o)：汇编器将汇编语言翻译成机器语言指令，并打包成可重定位目标程序 hello.o</li>
+</ol>
+<pre tabindex="0"><code>gcc -c hello.s -o hello.o
+</code></pre><ol start="5">
+<li>链接器 (.o =&gt; .exe/.out)：链接可重定位的二进制文件，形成完整的逻辑地址，生成可执行目标文件</li>
+<li>装载：装载进内存，MMU把逻辑地址映射成物理地址</li>
+</ol>
+<h3 id="多文件构建系统">
+  多文件构建系统
+  <a class="anchor" href="#%e5%a4%9a%e6%96%87%e4%bb%b6%e6%9e%84%e5%bb%ba%e7%b3%bb%e7%bb%9f">#</a>
+</h3>
+<ul>
+<li>
+<p>make (Makefile)
+项目变大之后，源文件一个一个去手动去编译显然不现实，make就是为了解决这个问题，它是一个自动化编译的工具，可以实现一条命令编译所有源文件。
+但是前提它需要知道源文件之间的依赖关系，记录这些依赖关系规则的文件就是Makefile文件。</p>
+</li>
+<li>
+<p>configure
+配置程序，最终生成Makefile文件</p>
+</li>
+<li>
+<p>cmake
+更高级的构建系统，需要编写CMakeLists.txt文件(Clion IDE)，cmake根据该文件生成最终的Makefile文件</p>
+</li>
+<li>
+<p>make install
+将make编译生成的可执行文件安装到执行目录</p>
+</li>
+</ul>
+<h3 id="引用">
+  引用
+  <a class="anchor" href="#%e5%bc%95%e7%94%a8">#</a>
+</h3>
+<ul>
+<li><a href="https://book.douban.com/subject/5333562/">深入理解计算机系统</a></li>
+<li><a href="https://book.douban.com/subject/3652388/">程序员的自我修养</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  <script src="https://giscus.app/client.js"
+    data-repo='JustZyx/giscus-comments'
+    data-repo-id='R_kgDOHvFCsw'
+    data-category="General"
+    data-category-id='DIC_kwDOHvFCs84CSSli'
+    data-mapping="title"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="1"
+    data-input-position="bottom"
+    data-theme="light_tritanopia"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <section class="copyright">
+            <a href="https://blog.justzyx.cn">庄全🥚</a> © 2016 - 2022 | <a href="http://beian.miit.gov.cn" target="_blank">苏ICP备19052852号-1</a>
+          </section>
+        </ul>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
