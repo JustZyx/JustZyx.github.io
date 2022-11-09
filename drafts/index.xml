@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Drafts on 八股文</title>
+    <link>https://justzyx.github.io/drafts/</link>
+    <description>Recent content in Drafts on 八股文</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 08 Nov 2022 23:40:24 +0800</lastBuildDate><atom:link href="https://justzyx.github.io/drafts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>算法解题模板</title>
+      <link>https://justzyx.github.io/drafts/2022-11-08-algorithm-template/</link>
+      <pubDate>Tue, 08 Nov 2022 23:40:24 +0800</pubDate>
+      
+      <guid>https://justzyx.github.io/drafts/2022-11-08-algorithm-template/</guid>
+      <description>划重点, 天道酬勤, 勤的同时得长记性! 本文总结了一些算法心得
+动态规划 #  动态规划相比于暴力算法，主要的优点在于消灭重复计算。通常可以分为如下几个步骤：
+ 定义子问题「definition」: 初始化「initialization」: 找出一般的情况, 比如 n = 1, n = 2 如何求解 转移方程「transfer」: 找出n从1到2之间的内在规律, 并且推导到任意n  难点在于分析题意.
+深度优先搜索 #   找到出发的点, 通常是满足某种条件的点或者直接从左上角之类 抽象子问题 判断子问题的边界 递归的进行下一个子问题  拓扑排序 #  </description>
+    </item>
+    
+  </channel>
+</rss>
